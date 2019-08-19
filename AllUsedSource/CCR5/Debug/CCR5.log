@@ -1,0 +1,38 @@
+﻿生成启动时间为 2019/7/17 12:26:54。
+     1>项目“C:\自写程序\AllUsedSource\CCR5\CCR5.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Debug\CCR5.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         所有输出均为最新。
+         所有输出均为最新。
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\自写程序\CardManage\Debug\CCR5.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\CCR5.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\自写程序\CardManage\Debug\CCR5.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\自写程序\CardManage\Debug\CCR5.lib" /MACHINE:X86 /DLL Debug\CCR5.res
+         Debug\CCR5.dll.embed.manifest.res
+         Debug\CCR5.obj
+         Debug\stdafx.obj
+            正在创建库 C:\自写程序\CardManage\Debug\CCR5.lib 和对象 C:\自写程序\CardManage\Debug\CCR5.exp
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\CCR5.dll.embed.manifest" /manifest Debug\CCR5.dll.intermediate.manifest
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         CCR5.vcxproj -> C:\自写程序\CardManage\Debug\CCR5.dll
+       PostBuildEvent:
+         Description: 当前目录复制到共享位置
+         copy C:\自写程序\CardManage\Debug\CCR5.dll ..\Debug\CCR5.dll/y
+         copy C:\自写程序\CardManage\Debug\CCR5.lib ..\Debug\CCR5.lib/y
+         :VCEnd
+         已复制         1 个文件。
+         已复制         1 个文件。
+       FinalizeBuildStatus:
+         正在删除文件“Debug\CCR5.unsuccessfulbuild”。
+         正在对“Debug\CCR5.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\自写程序\AllUsedSource\CCR5\CCR5.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.44

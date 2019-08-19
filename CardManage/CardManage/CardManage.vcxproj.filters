@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\ExDialog">
+      <UniqueIdentifier>{5af5e0e9-11df-41ee-bb45-887b13933ad2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\ExPane">
+      <UniqueIdentifier>{1899d362-4bfe-4f53-8f32-95853e7c2b77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ExPane">
+      <UniqueIdentifier>{4e0e0e7c-188d-4ef9-a320-c7c7b481bc0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ExDialog">
+      <UniqueIdentifier>{4f07572a-bc4f-4700-8d9b-4d29ba5dc3cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Others">
+      <UniqueIdentifier>{6eb0f7ea-13f6-49dc-9a76-679fdf89b5dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Others">
+      <UniqueIdentifier>{18bad39f-71fc-4ddc-8b1c-9c1213ec7f59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\ExCtrl">
+      <UniqueIdentifier>{4697e985-2d54-4a0b-b6de-e28f0f9342e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\ExCtrl">
+      <UniqueIdentifier>{ec08f8b9-4f43-47cc-9ed9-fdce8ead6433}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="CardManage.reg" />
+    <None Include="res\output_wnd.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\output_wnd_hc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\buttons.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\filelarge.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\filesmall.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\main.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\writelarge.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\writesmall.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\ribbon.mfcribbon-ms">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CardManage.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CardManageDoc.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CardManage.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Toolbar.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Toolbar256.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Test.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CardManage_01.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\CardManage_02.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\bitmap3.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\toolbar1.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\ClassToolBar.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\mainfram.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="res\Pin_wnd.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\icon1.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\Applist_wnd.ico">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="ClassDiagram3.cd" />
+    <None Include="..\..\AllUsedSource\CCR5\CCR5.vcproj" />
+    <None Include="..\..\AllUsedSource\CCR5\CCR5.vcxproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CardManage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CardManageDoc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CardManageView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TermnalSetting.h">
+      <Filter>头文件\ExDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="SendCommand.h">
+      <Filter>头文件\ExDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="LeftPane.h">
+      <Filter>头文件\ExPane</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputWnd.h">
+      <Filter>头文件\ExPane</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\AllUsedSource\Basconv.h">
+      <Filter>头文件\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\AllUsedSource\Basusc2.h">
+      <Filter>头文件\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="C_SMS_ADN.h">
+      <Filter>头文件\ExDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="CardInfomation.h">
+      <Filter>头文件\ExDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="CExCtrl.h">
+      <Filter>头文件\ExCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="CApplication.h">
+      <Filter>头文件\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="CAcroAXDocShim.h">
+      <Filter>头文件\ExCtrl</Filter>
+    </ClInclude>
+    <ClInclude Include="ReferenceWnd.h">
+      <Filter>头文件\ExPane</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CardManage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CardManageDoc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CardManageView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SendCommand.cpp">
+      <Filter>源文件\ExDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="TermnalSetting.cpp">
+      <Filter>源文件\ExDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="LeftPane.cpp">
+      <Filter>源文件\ExPane</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputWnd.cpp">
+      <Filter>源文件\ExPane</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\AllUsedSource\Basconv.cpp">
+      <Filter>源文件\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\AllUsedSource\Basusc2.cpp">
+      <Filter>源文件\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="C_SMS_ADN.cpp">
+      <Filter>源文件\ExDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="CardInfomation.cpp">
+      <Filter>源文件\ExDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="CExCtrl.cpp">
+      <Filter>源文件\ExCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="CAcroAXDocShim.cpp">
+      <Filter>源文件\ExCtrl</Filter>
+    </ClCompile>
+    <ClCompile Include="ReferenceWnd.cpp">
+      <Filter>源文件\ExPane</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CardManage.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

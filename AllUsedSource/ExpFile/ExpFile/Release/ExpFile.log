@@ -1,0 +1,39 @@
+﻿生成启动时间为 2019/7/31 13:41:21。
+     1>项目“C:\自写程序\AllUsedSource\ExpFile\ExpFile\ExpFile.vcxproj”在节点 2 上(rebuild 个目标)。
+     1>_PrepareForClean:
+         正在删除文件“Release\ExpFile.lastbuildstate”。
+       InitializeBuildStatus:
+         正在创建“Release\ExpFile.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _USRDLL /D _WINDLL /D _MBCS /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Release\ExpFile.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _USRDLL /D _WINDLL /D _MBCS /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\ExpFile.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Basconv.cpp ExpFile.cpp
+         Basconv.cpp
+         ExpFile.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D NDEBUG /D _AFXDLL /l"0x0804" /IRelease\ /nologo /fo"Release\ExpFile.res" ExpFile.rc 
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\自写程序\CardManage\Release\ExpFile.dll" /INCREMENTAL:NO /NOLOGO BasicConvert.lib ParameterConvert.lib /DEF:".\ExpFile.def" /MANIFEST /ManifestFile:"Release\ExpFile.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\自写程序\CardManage\Release\ExpFile.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\自写程序\CardManage\Release\ExpFile.lib" /MACHINE:X86 /DLL Release\ExpFile.res
+         Release\Basconv.obj
+         Release\ExpFile.obj
+         Release\stdafx.obj
+            正在创建库 C:\自写程序\CardManage\Release\ExpFile.lib 和对象 C:\自写程序\CardManage\Release\ExpFile.exp
+         正在生成代码
+         已完成代码的生成
+         ExpFile.vcxproj -> C:\自写程序\CardManage\Release\ExpFile.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\自写程序\CardManage\Release\ExpFile.dll;#2" /manifest Release\ExpFile.dll.intermediate.manifest "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       PostBuildEvent:
+         copy C:\自写程序\CardManage\Release\ExpFile.dll C:\自写程序\AllUsedSource\Release\ExpFile.dll/y
+         copy C:\自写程序\CardManage\Release\ExpFile.lib C:\自写程序\AllUsedSource\Release\ExpFile.lib/y
+         :VCEnd
+         已复制         1 个文件。
+         已复制         1 个文件。
+       FinalizeBuildStatus:
+         正在删除文件“Release\ExpFile.unsuccessfulbuild”。
+         正在对“Release\ExpFile.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\自写程序\AllUsedSource\ExpFile\ExpFile\ExpFile.vcxproj”(rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:13.08

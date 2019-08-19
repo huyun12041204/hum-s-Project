@@ -1,0 +1,38 @@
+﻿生成启动时间为 2019/7/31 15:19:45。
+     1>项目“C:\自写程序\AllUsedSource\BasicConvert\BasicConvert\BasicConvert.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\BasicConvert.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _USRDLL /D _WINDLL /D _MBCS /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\BasicConvert.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt BasicConvert.cpp
+         BasicConvert.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\自写程序\CardManage\Debug\BasicConvert.dll" /INCREMENTAL /NOLOGO /DEF:".\BasicConvert.def" /MANIFEST /ManifestFile:"Debug\BasicConvert.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\自写程序\CardManage\Debug\BasicConvert.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\自写程序\CardManage\Debug\BasicConvert.lib" /MACHINE:X86 /DLL Debug\BasicConvert.res
+         Debug\BasicConvert.dll.embed.manifest.res
+         Debug\BasicConvert.obj
+         Debug\Basusc2.obj
+         Debug\stdafx.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\BasicConvert.dll.embed.manifest" /manifest Debug\BasicConvert.dll.intermediate.manifest "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         BasicConvert.vcxproj -> C:\自写程序\CardManage\Debug\BasicConvert.dll
+       PostBuildEvent:
+         copy C:\自写程序\CardManage\Debug\BasicConvert.dll C:\自写程序\AllUsedSource\Debug\BasicConvert.dll/y
+         copy C:\自写程序\CardManage\Debug\BasicConvert.lib C:\自写程序\AllUsedSource\Debug\BasicConvert.lib/y
+         :VCEnd
+         已复制         1 个文件。
+         已复制         1 个文件。
+       FinalizeBuildStatus:
+         正在删除文件“Debug\BasicConvert.unsuccessfulbuild”。
+         正在对“Debug\BasicConvert.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\自写程序\AllUsedSource\BasicConvert\BasicConvert\BasicConvert.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:05.56

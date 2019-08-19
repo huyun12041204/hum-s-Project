@@ -1,0 +1,479 @@
+DF/ADF,FID,NAME,ABBR,DOC,PAGE,POS
+,3F00,MF,,,,
+MF,2F00,DIR,DIR,102.221,140,1
+MF,2FE2,ICC Identification,ICCID,102.221,141,1
+MF,2F05,Preferred Languages,PL,102.221,142,1
+MF,2F06,Access Rule Reference,ARR,102.221,142,2
+MF,EA04,ICCR,ICCR,,,
+MF,7FF0,USIM,3GPP,,,
+USIM,6F05,Language Indication,LI,31.102,21,2
+USIM,6F07,International Mobile Subscriber Identity,IMSI,31.102,22,1
+USIM,6F08,Ciphering and Integrity Keys,Keys,31.102,23,1
+USIM,6F09,Ciphering and Integrity Keys for Packet Switched domain,KeysPS,31.102,23,3
+USIM,6F60,User controlled PLMN selector with Access Technology,PLMNwAcT,31.102,24,2
+USIM,6F31,Higher Priority PLMN search period,HPPLMN,31.102,25,3
+USIM,6F37,ACM maximum value,ACMmax,31.102,26,3
+USIM,6F38,USIM Service Table,UST,31.102,28,1
+USIM,6F39,Accumulated Call Meter,ACM,31.102,31,4
+USIM,6F3E,Group Identifier Level 1,GID1,31.102,32,4
+USIM,6F3F,Group Identifier Level 2,GID2,31.102,32,5
+USIM,6F46,Service Provider Name,SPN,31.102,33,2
+USIM,6F41,Price per Unit and Currency Table,PUCT,31.102,34,1
+USIM,6F45,Cell Broadcast Message identifier selection,CBMI,31.102,35,1
+USIM,6F78,Access Control Class,ACC,31.102,35,3
+USIM,6F7B,Forbidden PLMNs,FPLMN,31.102,36,2
+USIM,6F7E,Location Information,LOCI,31.102,36,5
+USIM,6FAD,Administrative Data,AD,31.102,37,5
+USIM,6F48,Cell Broadcast Message Identifier for Data Download,CBMID,31.102,39,5
+USIM,6FB7,Emergency Call Codes,ECC,31.102,40,3
+USIM,6F50,Cell Broadcast Message Identifier Range selection,CBMIR,31.102,41,3
+USIM,6F73,Packet Switched location information,PSLOCI,31.102,42,2
+USIM,6F3B,Fixed Dialling Numbers,FDN,31.102,43,2
+USIM,6F3C,Short messages,SMS,31.102,43,5
+USIM,6F40,MSISDN,MSISDN,31.102,45,1
+USIM,6F42,Short message service parameters,SMSP,31.102,45,4
+USIM,6F43,Short message service status,SMSS,31.102,47,2
+USIM,6F49,Service Dialling Numbers,SDN,31.102,47,4
+USIM,6F4B,Extension2,EXT2,31.102,48,3
+USIM,6F4C,Extension3,EXT3,31.102,48,4
+USIM,6F47,Short message status reports,SMSR,31.102,49,1
+USIM,6F80,Incoming Call Information,ICI,31.102,49,4
+USIM,6F81,Outgoing Call Information,OCI,31.102,53,1
+USIM,6F82,Incoming Call Timer,ICT,31.102,53,5
+USIM,6F83,Outgoing Call Timer,OCT,31.102,54,4
+USIM,6F4E,Extension5,EXT5,31.102,55,2
+USIM,6F4F,Capability Configuration Parameters 2,CPP2,31.102,55,4
+USIM,6FB5,enhanced Multi Level Precedence and Pre-emption,EMLPP,31.102,56,1
+USIM,6FB6,Automatic Answer for eMLPP Service,AAeM,31.102,57,2
+USIM,6FC3,Key for hidden phone book entries,HiddenKey,31.102,58,1
+USIM,6F4D,Barred Dialling Numbers,BDN,31.102,58,3
+USIM,6F55,Extension4,EXT4,31.102,59,1
+USIM,6F58,Comparison Method Information,CMI,31.102,59,2
+USIM,6F56,Enabled Services Table,EST,31.102,60,1
+USIM,6F57,Access Point Name Control List,ACL,31.102,60,5
+USIM,6F2C,Depersonalisation Control Keys,DCK,31.102,61,2
+USIM,6F32,Co-operative Network List,CNL,31.102,61,4
+USIM,6F5B,Initialisation values for Hyperframe number,TART-HFN,31.102,63,1
+USIM,6F5C,Maximum value of START,THRESHOLD,31.102,63,3
+USIM,6F61,Operator controlled PLMN selector with Access Technology,OPLMNwAcT,31.102,63,5
+USIM,6F62,HPLMN selector with Access Technology,HPLMNwAcT,31.102,64,3
+USIM,6F06,Access Rule Reference,ARR,31.102,65,1
+USIM,6FC4,NETPAR,NETPAR,31.102,66,1
+USIM,6FC5,PLMN Network Name,PNN,31.102,68,3
+USIM,6FC6,Operator PLMN List,ONL,31.102,69,3
+USIM,6FC7,Mailbox Dialling Numbers,MDN,31.102,70,3
+USIM,6FC8,Extension6,EXT6,31.102,71,1
+USIM,6FC9,Mailbox Identifier,MBI,31.102,71,3
+USIM,6FCA,Message Waiting Indication Status,MWIS,31.102,71,5
+USIM,6FCB,Call Forwarding Indication Status,CFIS,31.102,73,2
+USIM,6FCC,Extension7,EXT7,31.102,74,2
+USIM,6FCD,Service Provider Display Information,SPDI,31.102,74,3
+USIM,6FCE,MMS Notification,MMSN,31.102,75,3
+USIM,6FCF,Extension 8,EXT8,31.102,77,1
+USIM,6FD0,MMS Issuer Connectivity Parameters,MMSICP,31.102,77,4
+USIM,6FD1,MMS User Preferences,MMSUP,31.102,80,2
+USIM,6FD2,MMS User Connectivity Parameters,MMSUCP,31.102,81,2
+USIM,6FD3,Network's Indication of Alerting,NIA,31.102,81,5
+USIM,6FB1,Voice Group Call Service,VGCS,31.102,82,3
+USIM,6FB2,Voice Group Call Service Status,VGCSS,31.102,84,1
+USIM,6FB3,Voice Broadcast Service,VBS,31.102,84,5
+USIM,6FB4,Voice Broadcast Service Status,VBSS,31.102,86,3
+USIM,6FD4,Voice Group Call Service Ciphering Algorithm,VGCSCA,31.102,87,1
+USIM,6FD5,Voice Broadcast Service Ciphering Algorithm,VBSCA,31.102,88,1
+USIM,6FD6,GBA Bootstrapping parameters,GBAP,31.102,88,3
+USIM,6FD7,MBMS Service Keys List,MSK,31.102,89,3
+USIM,6FD8,MBMS User Key,MUK,31.102,90,2
+USIM,6FDA,GBA NAF List,GBANL,31.102,91,3
+USIM,6FD9,Equivalent HPLMN,EHPLMN,31.102,92,2
+USIM,6FDB,Equivalent HPLMN Presentation Indication,EHPLMNPI,31.102,92,4
+USIM,6FDC,Last RPLMN Selection Indication,LRPLMNSI,31.102,93,2
+USIM,6FDD,NAF Key Centre Address,NAFKCA,31.102,93,4
+USIM,6FDE,Service Provider Name Icon,SPNI,31.102,94,2
+USIM,6FDF,PLMN Network Name Icon,PNNI,31.102,95,3
+USIM,6FE2,Network Connectivity Parameters for USIM IP connections,NCP-IP,31.102,95,4
+USIM,6FE3,EPS location information,EPSLOCI,31.102,98,2
+USIM,6FE4,EPS NAS Security Context,EPSNSC,31.102,100,1
+USIM,6FE8,Non Access Stratum Configuration,NASC,31.102,102,3
+USIM,6FEC,Public Warning System,PWS,31.102,107,2
+USIM,6FED,Fixed Dialling Numbers URI,FDNURI,31.102,107,5
+USIM,6FEE,Barred Dialling Numbers URI,BDNURI,31.102,108,5
+USIM,6FEF,Service Dialling Numbers URI,SDNUIR,31.102,109,4
+USIM,6FF0,IMEI(SV) White Lists,IWL,31.102,110,4
+USIM,6FF1,IMEI(SV) Pairing Status,IPS,31.102,111,4
+USIM,6FF2,IMEI(SV) of Pairing Device,IPD,31.102,112,3
+USIM,6FF3,Home ePDG Identifier,ePDGId,31.102,113,3
+USIM,6FF4,ePDG Selection Information,ePDGSelection,31.102,114,3
+USIM,6FF5,Emergency ePDG Identifier,ePDGIdEm,31.102,116,1
+USIM,6FF6,"ePDG Selection Information for Emergency
+Services",ePDGSelectionEm,31.102,116,3
+USIM,6FF7,From Preferred,From Preferred,31.102,116,5
+USIM,6FXX,IMS Configuration Data,IMSConfigData,31.102,117,3
+USIM,6FXX,TV Configuration,TVCONFIG,31.102,117,4
+USIM,6FF9,3GPP PS Data Off,3GPPPSDATAOFF,31.102,119,1
+USIM,6FFA,3GPP PS Data Off Service List,3GPPPSDATAOFFservicelist,31.102,120,1
+USIM,6FXX,XCAP Configuration Data,XCAPConfigData,31.102,120,4
+USIM,6FFE,EARFCN list for MTC/NB-IOT UEs,EARFCNList,31.102,120,5
+USIM,6FFF,5GS 3GPP location information,5GS3GPPLOCI,31.102,121,5
+USIM,6F01,5G authentication keys,5GAUTHKEYS,31.102,123,2
+USIM,6F02,5GS 3GPP Access NAS Security Context,5GS3GPPNSC,31.102,123,5
+USIM,6F03,5GS non-3GPP Access NAS Security Context,5GS3GPPNSC,31.102,125,5
+USIM,6F04,"Subscription Concealed Identifier Calculation
+Information EF",SUCI_Calc_Info,31.102,126,2
+USIM,6F05,UAC Access Identities Configuration,UAC_AIC,31.102,128,1
+USIM,6F05,Steering of UE in VPLMN,Steering_of_UE_in_VPLMN,31.102,128,4
+USIM,5F70,SoLSA,,,,
+SoLSA,4F30,SoLSA Access Indicator,SAI,31.102,130,1
+SoLSA,4F31,SoLSA LSA List,SLL,31.102,130,4
+SoLSA,4FXX,LSA Descriptor files,LSA Descriptor,31.102,133,1
+USIM,5F3A,PHONEBOOK,,,,
+PHONEBOOK,4F30,Phone Book Reference file,PBR,31.102,135,1
+PHONEBOOK,4FXX,Index Administration Phone book,IAP,31.102,137,1
+PHONEBOOK,4FXX,Abbreviated dialling numbers,ADN,31.102,137,3
+PHONEBOOK,4FXX,Extension1,EXT,31.102,140,3
+PHONEBOOK,4FXX,Phone Book Control,PBC,31.102,142,3
+PHONEBOOK,4FXX,Grouping file,GRP,31.102,143,2
+PHONEBOOK,4FXX,Additional number Alpha String,AAS,31.102,143,4
+PHONEBOOK,4FXX,Grouping information Alpha String,GAS,31.102,144,3
+PHONEBOOK,4FXX,Additional Number,ANR,31.102,144,5
+PHONEBOOK,4FXX,Second Name Entry,SNE,31.102,146,4
+PHONEBOOK,4FXX,Unique Identifier,UID,31.102,149,5
+PHONEBOOK,4FXX,Capability Configuration Parameters 1,CCP1,31.102,147,3
+PHONEBOOK,4F22,Phone book Synchronisation Counter,PSC,31.102,148,3
+PHONEBOOK,4F23,Change Counter,CC,31.102,149,3
+PHONEBOOK,4F24,Previous Unique Identifier,PUID,31.102,150,1
+PHONEBOOK,4FXX,e-mail address,EMAIL,31.102,150,3
+PHONEBOOK,4FXX,Phonebook URIs,PURI,31.102,151,3
+USIM,5F3B,GSM-ACCESS,,,,
+GSM-ACCESS,4F20,GSM Ciphering key Kc,Kc,31.102,152,3
+GSM-ACCESS,4F52,GPRS Ciphering key KcGPRS,KcGPRS,31.102,153,1
+GSM-ACCESS,4F63,CPBCCH Information),CPBCCH,31.102,153,3
+GSM-ACCESS,4F64,Investigation Scan,InvScan,31.102,154,4
+USIM,5F3C,MexE,,,,
+MexE,4F40,MexE Service table,MexE-ST,31.102,155,2
+MexE,4F41,Operator Root Public Key,ORPK,31.102,155,4
+MexE,4F42,Administrator Root Public Key,ARPK,31.102,157,4
+MexE,4F43,Third Party Root Public Key,TPRPK,31.102,158,3
+MexE,4FXX,Trusted Key/Certificates Data Files,TKCDF,31.102,159,2
+USIM,5F40,WLAN,,,,
+WLAN,4F41,Pseudonym,Pseudo,31.102,159,3
+WLAN,4F42,User controlled PLMN selector for I-WLAN Access,UPLMNWLAN,31.102,160,2
+WLAN,4F43,Operator controlled PLMN selector for I-WLAN Access,OPLMNWLAN,31.102,160,5
+WLAN,4F44,User controlled WLAN Specific Identifier List,UWSIDL,31.102,161,3
+WLAN,4F45,Operator controlled WLAN Specific IdentifierList,OWSIDL,31.102,162,1
+WLAN,4F46,WLAN Reauthentication Identity,WRI,31.102,162,3
+WLAN,4F47,Home I-WLAN Specific Identifier List,HWSIDL,31.102,163,3
+WLAN,4F48,I-WLAN Equivalent HPLMN Presentation Indication,WEHPLMNPI,31.102,163,5
+WLAN,4F49,I-WLAN HPLMN Priority Indication,WHPI,31.102,164,4
+WLAN,4F4A,I-WLAN Last Registered PLMN,WLRPLMN,31.102,164,5
+WLAN,4F4B,HPLMN Direct Access Indicator,HPLMNDAI,31.102,165,3
+USIM,5F50,HNB,,,,
+HNB,4F81,Allowed CSG Lists,ACSGL,31.102,165,5
+HNB,4F82,CSG Type,CSGT,31.102,168,1
+HNB,4F83,Home NodeB Name,HNBN,31.102,170,1
+HNB,4F84,Operator CSG Lists,OCSGL,31.102,170,4
+HNB,4F85,Operator CSG Type,OCSGT,31.102,172,4
+HNB,4F86,Operator Home NodeB Name,OHNBN,31.102,173,1
+USIM,5F70,ProSe,,,,
+ProSe,4F01,ProSe Monitoring Parameters,PROSE_MON,31.102,173,3
+ProSe,4F02,ProSe Announcing Parameters,PROSE_ANN,31.102,174,3
+ProSe,4F03,HPLMN ProSe Function,PROSEFUNC,31.102,175,4
+ProSe,4F04,ProSe Direct Communication Radio Parameters,PROSE_RADIO_COM,31.102,176,3
+ProSe,4F05,ProSe Direct Discovery Monitoring Radio Parameters,PROSE_RADIO_MON,31.102,178,1
+ProSe,4F06,ProSe Direct Discovery Announcing Radio Parameters,PROSE_RADIO_ANN,31.102,179,3
+ProSe,4F07,ProSe Policy Parameters,PROSE_POLICY,31.102,180,4
+ProSe,4F08,ProSe PLMN Parameters,PROSE_PLMN,31.102,182,5
+ProSe,4F09,ProSe Group Counter,PROSE_GC,31.102,183,5
+ProSe,4F10,ProSe Service Table,PST,31.102,185,1
+ProSe,4F11,ProSe UsageInformationReportingConfiguration,PROSE_UIRC,31.102,185,5
+ProSe,4F12,ProSe Group Member Discovery Parameters,PROSE_GM_DISCOVERY,31.102,189,1
+ProSe,4F13,ProSe Relay Parameters,PROSE_RELAY,31.102,190,2
+ProSe,4F14,ProSe Relay Discovery Parameters,PROSE_RELAY_DISCOVERY,31.102,191,2
+USIM,5FA0,ACDC,,,,
+ACDC,4F01,ACDC List,ACDC_LIST,31.102,194,5
+ACDC,4FXX,ACDC OS configuration,ACDC_OS_CONFIG,31.102,195,5
+USIM,5FB0,TV,,,,
+TV,4FXX,TV User Service Description,TVUSD,31.102,196,5
+MF,7F10,TELECOM,,,,
+TELECOM,6F3A,Abbreviated dialling numbers,ADN,11.11,97,5
+TELECOM,6F3B,Fixed dialling numbers,FDN,11.11,101,1
+TELECOM,6F3C,Short messages,SMS,11.11,101,3
+TELECOM,6F3D,Capability configuration parameters,CPP,11.11,102,5
+TELECOM,6F4F,Extended Capability configuration parameters,ECCP,11.11,103,3
+TELECOM,6F40,MSISDN,MSISDN,11.11,104,1
+TELECOM,6F42,Short message service parameters,SMSP,11.11,104,4
+TELECOM,6F43,Short message service status,SMSS,11.11,106,2
+TELECOM,6F44,Last number dialled,LND,11.11,107,1
+TELECOM,6F49,Service Dialling Numbers,SDN,11.11,107,3
+TELECOM,6F4B,Extension2,EXT2,11.11,109,3
+TELECOM,6F4C,Extension3,EXT3,11.11,110,1
+TELECOM,6F4D,Barred Dialling Numbers,BDN,11.11,110,4
+TELECOM,6F4E,Extension4,EXT4,11.11,111,1
+TELECOM,6F47,Short message status reports,SMSR,11.11,111,3
+TELECOM,6F58,Comparison Method Information,CMI,11.11,112,1
+TELECOM,6F4A,Extension1,EXT1,31.102,197,4
+TELECOM,6F3D,Extended Capability Configuration Parameter,ECCP,31.102,197,5
+TELECOM,6F54,SetUpMenu Elements,SUME,102.222,27,1
+TELECOM,6F06,Access Rule Reference,ARR,31.102,198,1
+TELECOM,6FE0,In Case of Emergency – Dialling Number,ICE_DN,31.102,198,3
+TELECOM,6FE1,In Case of Emergency – Free Format,ICE_FF,31.102,198,5
+TELECOM,6F53,Remote Management Actions,RMA,102.222,28,1
+TELECOM,6FE5,Public Service Identity of the SM-SC,PSISMSC,31.102,200,1
+TELECOM,5F50,GRAPHICS,,,,
+GRAPHICS,4F20,Image,IMG,31.102,200,5
+GRAPHICS,4FXX,Image Instance Data Files,IIDF,31.102,202,4
+GRAPHICS,4F21,In Case of Emergency – Graphics,ICE_graphics,31.102,202,5
+TELECOM,5F3B,MULTIMEDIA,,,,
+MULTIMEDIA,4F47,Multimedia Messages List,MML,31.102,203,4
+MULTIMEDIA,4F48,Multimedia Messages Data File,MMDF,31.102,206,1
+TELECOM,5F3D,MCPTT,,,,
+MCPTT,4F01,MCPTT Service Table,MST,31.102,207,1
+MCPTT,4F02,MCPTT configuration data,MCPTT_ CONFIG,31.102,207,5
+TELECOM,5F3E,V2X,,,,
+V2X,4F01,V2X Service Table,VST,31.102,209,1
+V2X,4F02,V2X configuration data,V2X_CONFIG,31.102,209,4
+MF,7F20,GSM,,,,
+GSM,6F05,Language preference,LP,11.11,55,3
+GSM,6F06,Access Rule Reference,ARR,31.102,198,1
+GSM,6F07,International Mobile Subscriber Identity,IMSI,11.11,56,1
+GSM,6F20,Ciphering key Kc,KcGPRS,11.11,57,1
+GSM,6F30,PLMN selector,PLMNSel,11.11,57,3
+GSM,6F31,Higher Priority PLMN search period,HPPLMN,11.11,58,2
+GSM,6F37,ACM maximum value,ACMmax,11.11,59,1
+GSM,6F38,SIM service table,SST,11.11,60,1
+GSM,6F39,Accumulated call meter,ACM,11.11,62,2
+GSM,6F3E,Group Identifier Level 1,GID1,11.11,63,1
+GSM,6F3F,Group Identifier Level 2,GID2,11.11,63,2
+GSM,6F46,Service Provider Name,SPN,11.11,63,4
+GSM,6F41,Price per unit and currency table,PUCT,11.11,64,2
+GSM,6F45,Cell broadcast message identifier selection,CBMI,11.11,65,3
+GSM,6F74,Broadcast control channels,BCCH,11.11,65,5
+GSM,6F78,Access control class,ACC,11.11,66,3
+GSM,6F7B,Forbidden PLMNs,FPLMN,11.11,67,1
+GSM,6F7E,Location information,LOCI,11.11,67,5
+GSM,6FAD,Administrative data,AD,11.11,69,1
+GSM,6FAE,Phase identification,Phase,11.11,70,3
+GSM,6FB1,Voice Group Call Service,VGCS,11.11,71,1
+GSM,6FB2,Voice Group Call Service Status,VGCSS,11.11,72,4
+GSM,6FB3,Voice Broadcast Service,VBS,11.11,73,3
+GSM,6FB4,Voice Broadcast Service Status,VBSS,11.11,75,1
+GSM,6FB5,enhanced Multi Level Pre-emption and Priority,eMLPP,11.11,75,3
+GSM,6FB6,Automatic Answer for eMLPP Service,AAeM,11.11,76,3
+GSM,6F48,Cell Broadcast Message Identifier for Data Download,CBMID,11.11,77,2
+GSM,6FB7,Emergency Call Codes,ECC,11.11,78,1
+GSM,6F50,Cell broadcast message identifier range selection,CBMIR,11.11,79,2
+GSM,6F2C,De-personalization Control Keys,DCK,11.11,80,1
+GSM,6F32,Co-operative Network List,CNL,11.11,80,3
+GSM,6F51,Network's Indication of Alerting,NIA,11.11,81,4
+GSM,6F52,GPRS Ciphering key KcGPRS,KcGPRS,11.11,82,3
+GSM,6F53,GPRS location information,LOCIGPRS,11.11,82,4
+GSM,6F54,SetUpMenu Elements,SUME,11.11,84,1
+GSM,6F60,User controlled PLMN Selector with Access Technology,PLMNwAcT,11.11,84,5
+GSM,6F61,Operator controlled PLMN Selector with Access Technology,OPLMNwAcT,11.11,86,2
+GSM,6F62,HPLMN Selector with Access Technology,HPLMNwAcT,11.11,87,1
+GSM,6F63,CPBCCH Information,CPBCCH,11.11,87,4
+GSM,6F64,Investigation Scan,InvScan,11.11,88,3
+USM,5F70,SoLSA,,11.11,,
+SoLSA,4F30,SoLSA Access Indicator,SAI,11.11,89,3
+SoLSA,4F31,SoLSA LSA List,SLL,11.11,90,1
+SoLSA,4FXX,LSA Descriptor files,LSADescriptor,11.11,92,1
+MF,7FF1,CSIM,3GPP2,,,
+CSIM,6F21,Call Count,COUNT,C.S0065-B,9,1
+CSIM,6F22,IMSI_M,IMSI_M,C.S0065-B,10,1
+CSIM,6F23,IMSI_T,IMSI_T,C.S0065-B,13,1
+CSIM,6F24,TMSI,TMSI,C.S0065-B,14,1
+CSIM,6F25,Analog Home SID,AH,C.S0065-B,15,1
+CSIM,6F26,Analog Operational Parameters,AOP,C.S0065-B,16,1
+CSIM,6F27,Analog Location and Registration Indicators,ALOC,C.S0065-B,17,1
+CSIM,6F28,CDMA Home SID NID,CDMAHOME,C.S0065-B,19,1
+CSIM,6F29,CDMA Zone-Based Registration Indicators,ZNREGI,C.S0065-B,21,1
+CSIM,6F2A,CDMA System-Network Registration Indicators,SNREGI,C.S0065-B,23,1
+CSIM,6F2B,CDMA Distance-Based Registration Indicators,DISTREGI,C.S0065-B,25,1
+CSIM,6F2C,Access Overload Class ACCOLCp,ACCOLC,C.S0065-B,27,1
+CSIM,6F2D,Call Termination Mode Preferences,TERM,C.S0065-B,28,1
+CSIM,6F2E,Suggested Slot Cycle Index,SSCI,C.S0065-B,29,1
+CSIM,6F2F,Analog Channel Preferences,ACP,C.S0065-B,30,1
+CSIM,6F30,Preferred Roaming List,PRL,C.S0065-B,31,1
+CSIM,6F31,UIM_ID,RUIMID,C.S0065-B,32,1
+CSIM,6F32,CSIM Service Table,CSIM_ST,C.S0065-B,33,1
+CSIM,6F33,Service Programming Code,SPC,C.S0065-B,36,1
+CSIM,6F34,OTAPA/SPC_Enabled,OTAPASPC,C.S0065-B,38,1
+CSIM,6F35,NAM_LOCK,NAMLOCK,C.S0065-B,39,1
+CSIM,6F36,OTASP/OTAPA Features,OTA,C.S0065-B,40,1
+CSIM,6F37,Service Preferences,SP,C.S0065-B,41,1
+CSIM,6F38,ESN_ME,ESNME,C.S0065-B,42,1
+CSIM,6F39,Reserved,,C.S0065-B,43,1
+CSIM,6F3A,Language Indication,LI,C.S0065-B,44,1
+CSIM,6F3B,Fixed Dialling Numbers,FDN,C.S0065-B,45,1
+CSIM,6F3C,Short Messages,SMS,C.S0065-B,46,1
+CSIM,6F3D,Short Message Service Parameters,SMSP,C.S0065-B,48,1
+CSIM,6F3E,SMS Status,SMSS,C.S0065-B,51,1
+CSIM,6F3F,Supplementary Services Feature Code Table,SSFC,C.S0065-B,53,1
+CSIM,6F40,Reserved,,C.S0065-B,,1
+CSIM,6F41,CDMA Home Service Provider Name,SPN,C.S0065-B,56,1
+CSIM,6F42,UIM_ID/SF_EUIMID Usage Indicator,USGIND,C.S0065-B,58,1
+CSIM,6F43,Administrative Data,AD,C.S0065-B,,1
+CSIM,6F44,Mobile Directory Number,MDN,C.S0065-B,61,1
+CSIM,6F45,Maximum PRL,MAXPRL,C.S0065-B,63,1
+CSIM,6F46,SPC Status,SPCS,C.S0065-B,64,1
+CSIM,6F47,Emergency Call Codes,ECC,C.S0065-B,65,1
+CSIM,6F48,ME 3GPD Operation Capability,ME3GPDOPC,C.S0065-B,67,1
+CSIM,6F49,3GPD Operation Mode,3GPDOPM,C.S0065-B,68,1
+CSIM,6F4A,SimpleIP Capability Parameters,SIPCAP,C.S0065-B,69,1
+CSIM,6F4B,MobileIP Capability Parameters,MIPCAP,C.S0065-B,70,1
+CSIM,6F4C,SimpleIP User Profile Parameters,SIPUPP,C.S0065-B,71,1
+CSIM,6F4D,MobileIP User Profile Parameters,MIPUPP,C.S0065-B,72,1
+CSIM,6F4E,SimpleIP Status Parameters,SIPSP,C.S0065-B,73,1
+CSIM,6F4F,MobileIP Status Parameters,MIPSP,C.S0065-B,74,1
+CSIM,6F50,SimpleIP PAP SS Parameters,SIPPAPSS,C.S0065-B,75,1
+CSIM,6F51,Reserved,,C.S0065-B,76,1
+CSIM,6F52,Reserved,,C.S0065-B,77,1
+CSIM,6F53,Preferred User Zone List,PUZL,C.S0065-B,78,1
+CSIM,6F54,Maximum PUZL,MAXPUZL,C.S0065-B,79,1
+CSIM,6F55,ME-specific Configuration Request Parameters,MECRP,C.S0065-B,80,1
+CSIM,6F56,HRPD Access Authentication Capability Parameters,RPDCAP,C.S0065-B,81,1
+CSIM,6F57,HRPD Access Authentication User Profile Parameters,HRPDUPP,C.S0065-B,82,1
+CSIM,6F58,CUR_SSPR_P_REV,CSSPR 1,C.S0065-B,83,1
+CSIM,6F59,Access Terminal Class,ATC,C.S0065-B,84,1
+CSIM,6F5A,Extended Preferred Roaming List,EPRL,C.S0065-B,85,1
+CSIM,6F5B,Broadcast Short Message Configuration,BCSMScfg,C.S0065-B,86,1
+CSIM,6F5C,Broadcast Short Message Preference,BCSMSpref,C.S0065-B,87,1
+CSIM,6F5D,Broadcast Short Message Table,BCSMStable,C.S0065-B,88,1
+CSIM,6F5E,Broadcast Short Message Parameter,BCSMSP,C.S0065-B,90,1
+CSIM,6F5F,,,C.S0065-B,,1
+CSIM,6F60,,,C.S0065-B,,1
+CSIM,6F61,,,C.S0065-B,,1
+CSIM,6F62,,,C.S0065-B,,1
+CSIM,6F63,Currently used BAK Parameters,BAKPARA,C.S0065-B,91,1
+CSIM,6F64,Updated BAK Parameters,UpBAKPARA,C.S0065-B,93,1
+CSIM,6F65,MMS Notification,MMSN,C.S0065-B,95,1
+CSIM,6F66,Extension 8,EXT8,C.S0065-B,98,1
+CSIM,6F67,MMS Issuer Connectivity Parameters,MMSICP,C.S0065-B,99,1
+CSIM,6F68,MMS User Preferences,MMSUP,C.S0065-B,102,1
+CSIM,6F69,MMS User Connectivity Parameters,MMSUCP,C.S0065-B,104,1
+CSIM,6F6A,Authentication Capability,AuthCapability,C.S0065-B,105,1
+CSIM,6F6B,3G Cipher and Integrity Keys,3GCIK,C.S0065-B,107,1
+CSIM,6F6C,De-Personalization Control Keys,DCK,C.S0065-B,108,1
+CSIM,6F6D,Group Identifier Level 1,GID1,C.S0065-B,109,1
+CSIM,6F6E,Group Identifier Level 2,GID2,C.S0065-B,110,1
+CSIM,6F6F,CDMA Co-operative Network List,CDMACNL,C.S0065-B,111,1
+CSIM,6F70,Home System Tag,HOME_TAG,C.S0065-B,113,1
+CSIM,6F71,Group Tag List,GROUP_TAG,C.S0065-B,114,1
+CSIM,6F72,Specific Tag List,SPECIFIC_TAG,C.S0065-B,115,1
+CSIM,6F73,Call Prompt List,CALL_PROMPT,C.S0065-B,116,1
+CSIM,6F74,Short Form EUIMID,SF_EUIMID,C.S0065-B,117,1
+CSIM,6F75,Enabled Service Table,EST,C.S0065-B,118,1
+CSIM,6F76,Key for hidden phone book entries,HiddenKey,C.S0065-B,120,1
+CSIM,6F77,LCS Protocol Version,LCSVER,C.S0065-B,121,1
+CSIM,6F78,LCS Connectivity Parameter,LCSCP,C.S0065-B,122,1
+CSIM,6F79,Service Dialling Numbers,SDN,C.S0065-B,123,1
+CSIM,6F7A,Extension2,EXT2,C.S0065-B,124,1
+CSIM,6F7B,Extension3,EXT3,C.S0065-B,125,1
+CSIM,6F7C,Incoming Call Information,ICI,C.S0065-B,126,1
+CSIM,6F7D,Outgoing Call Information,OCI,C.S0065-B,132,1
+CSIM,6F7E,Extension 5,EXT5,C.S0065-B,133,1
+CSIM,6F7F,Capability Configuration Parameters 2,CPP2,C.S0065-B,134,1
+CSIM,6F80,Application Labels,AppLabels,C.S0065-B,136,1
+CSIM,6F81,Device Model Information,Model,C.S0065-B,138,1
+CSIM,6F82,Root Certificates,RC,C.S0065-B,139,1
+CSIM,6F83,SMS Capabilities,SMSCAP,C.S0065-B,142,1
+CSIM,6F84,MobileIP Flags,MIPFlags,C.S0065-B,143,1
+CSIM,6F85,SimpleIP User Profile Parameters Extension,SIPUPPExt,C.S0065-B,144,1
+CSIM,6F86,MobileIP User Profile Parameters Extension,MIPUPPExt,C.S0065-B,147,1
+CSIM,6F87,IPv6 Capabilities,IPV6CAP,C.S0065-B,148,1
+CSIM,6F88,TCP Configurations,TCPConfig,C.S0065-B,151,1
+CSIM,6F89,Data Generic Configurations,DGC,C.S0065-B,152,1
+CSIM,6F8A,WAP Browser Connectivity Parameters,WAPBrowserCP,C.S0065-B,153,1
+CSIM,6F8B,WAP Browser Bookmarks,WAPBrowserBM,C.S0065-B,155,1
+CSIM,6F8C,MMS Configuration,MMSConfig,C.S0065-B,157,1
+CSIM,6F8D,Java Download URL,JDL,C.S0065-B,159,1
+MF,7F25,CDMA,,,,1
+CDMA,6F21,Call Count,CC,C.S0023-C,39,1
+CDMA,6F22,IMSI_M,IMSI_M,C.S0023-C,40,1
+CDMA,6F23,IMSI_T,IMSI_T,C.S0023-C,43,1
+CDMA,6F24,TMSI,TMSI,C.S0023-C,44,1
+CDMA,6F25,Analog Home SID,AH,C.S0023-C,45,1
+CDMA,6F26,Analog Operational Parameters,AOP,C.S0023-C,46,1
+CDMA,6F27,Analog Location and Registration Indicators,ALOC,C.S0023-C,47,1
+CDMA,6F28,CDMA Home SID NID,CDMAHOME,C.S0023-C,49,1
+CDMA,6F29,CDMA Zone-Based Registration Indicators,ZNREGI,C.S0023-C,50,1
+CDMA,6F2A,CDMA System-Network Registration Indicators,SNREGI,C.S0023-C,51,1
+CDMA,6F2B,CDMA Distance-Based Registration Indicators,DISTREGI,C.S0023-C,54,1
+CDMA,6F2C,Access Overload Class ACCOLCp,ACCOLC,C.S0023-C,56,1
+CDMA,6F2D,Call Termination Mode Preferences,TERM,C.S0023-C,57,1
+CDMA,6F2E,Suggested Slot Cycle Index,SSCI,C.S0023-C,58,1
+CDMA,6F2F,Analog Channel Preferences,ACP,C.S0023-C,59,1
+CDMA,6F30,Preferred Roaming List,PRL,C.S0023-C,60,1
+CDMA,6F31,UIM_ID,RUIMID,C.S0023-C,61,1
+CDMA,6F32,CSIM Service Table,CST,C.S0023-C,62,1
+CDMA,6F33,Service Programming Code,SPC,C.S0023-C,65,1
+CDMA,6F34,OTAPA/SPC_Enabled,OTAPASPC,C.S0023-C,67,1
+CDMA,6F35,NAM_LOCK,NAMLOCK,C.S0023-C,68,1
+CDMA,6F36,OTASP/OTAPA Features,OTA,C.S0023-C,69,1
+CDMA,6F37,Service Preferences,SP,C.S0023-C,70,1
+CDMA,6F38,ESN_ME,ESNME,C.S0023-C,71,1
+CDMA,6F39,R-UIM Revision,Revision,C.S0023-C,72,1
+CDMA,6F3A,Language Indication,LI,C.S0023-C,73,1
+CDMA,6F3B,,,,,1
+CDMA,6F3C,Short Messages,SMS,C.S0023-C,74,1
+CDMA,6F3D,Short Message Service Parameters,SMSP,C.S0023-C,76,1
+CDMA,6F3E,SMS Status,SMSS,C.S0023-C,79,1
+CDMA,6F3F,Supplementary Services Feature Code Table,SSFC,C.S0023-C,80,1
+CDMA,6F40,Reserved,,C.S0023-C,,1
+CDMA,6F41,CDMA Home Service Provider Name,SPN,C.S0023-C,84,1
+CDMA,6F42,UIM_ID/SF_EUIMID Usage Indicator,USGIND,C.S0023-C,85,1
+CDMA,6F43,Administrative Data,AD,C.S0023-C,86,1
+CDMA,6F44,Mobile Directory Number,MDN,C.S0023-C,87,1
+CDMA,6F45,Maximum PRL,MAXPRL,C.S0023-C,89,1
+CDMA,6F46,SPC Status,SPCS,C.S0023-C,90,1
+CDMA,6F47,Emergency Call Codes,ECC,C.S0023-C,91,1
+CDMA,6F48,ME 3GPD Operation Capability,ME3GPDOPC,C.S0023-C,92,1
+CDMA,6F49,3GPD Operation Mode,3GPDOPM,C.S0023-C,94,1
+CDMA,6F4A,SimpleIP Capability Parameters,SIPCAP,C.S0023-C,95,1
+CDMA,6F4B,MobileIP Capability Parameters,MIPCAP,C.S0023-C,96,1
+CDMA,6F4C,SimpleIP User Profile Parameters,SIPUPP,C.S0023-C,97,1
+CDMA,6F4D,MobileIP User Profile Parameters,MIPUPP,C.S0023-C,98,1
+CDMA,6F4E,SimpleIP Status Parameters,SIPSP,C.S0023-C,99,1
+CDMA,6F4F,MobileIP Status Parameters,MIPSP,C.S0023-C,100,1
+CDMA,6F50,SimpleIP PAP SS Parameters,SIPPAPSS,C.S0023-C,101,1
+CDMA,6F51,Reserved,,C.S0023-C,,1
+CDMA,6F52,Reserved,,C.S0023-C,,1
+CDMA,6F53,Preferred User Zone List,PUZL,C.S0023-C,104,1
+CDMA,6F54,Maximum PUZL,MAXPUZL,C.S0023-C,105,1
+CDMA,6F55,ME-specific Configuration Request Parameters,MECRP,C.S0023-C,106,1
+CDMA,6F56,HRPD Access Authentication Capability Parameters,RPDCAP,C.S0023-C,107,1
+CDMA,6F57,HRPD Access Authentication User Profile Parameters,HRPDUPP,C.S0023-C,108,1
+CDMA,6F58,CUR_SSPR_P_REV,CSSPR 1,C.S0023-C,109,1
+CDMA,6F59,Access Terminal Class,ATC,C.S0023-C,110,1
+CDMA,6F5A,Extended Preferred Roaming List,EPRL,C.S0023-C,111,1
+CDMA,6F5B,Broadcast Short Message Configuration,BCSMScfg,C.S0023-C,112,1
+CDMA,6F5C,Broadcast Short Message Preference,BCSMSpref,C.S0023-C,113,1
+CDMA,6F5D,Broadcast Short Message Table,BCSMStable,C.S0023-C,115,1
+CDMA,6F5E,Broadcast Short Message Parameter,BCSMSP,C.S0023-C,117,1
+CDMA,6F5F,IMS private user identity,IMPI,C.S0023-C,118,1
+CDMA,6F60,Home Network Domain Name,DOMAIN,C.S0023-C,119,1
+CDMA,6F61,IMS public user identity,IMPU,C.S0023-C,120,1
+CDMA,6F62,Proxy Call Session Control Function,PCSCF,C.S0023-C,121,1
+CDMA,6F63,Currently used BAK Parameters,BAKPARA,C.S0023-C,123,1
+CDMA,6F64,Updated BAK Parameters,UpBAKPARA,C.S0023-C,125,1
+CDMA,6F65,MMS Notification,MMSN,C.S0023-C,127,1
+CDMA,6F66,Extension 8,EXT8,C.S0023-C,129,1
+CDMA,6F67,MMS Issuer Connectivity Parameters,MMSICP,C.S0023-C,130,1
+CDMA,6F68,MMS User Preferences,MMSUP,C.S0023-C,133,1
+CDMA,6F69,MMS User Connectivity Parameters,MMSUCP,C.S0023-C,135,1
+CDMA,6F6A,Authentication Capability,AuthCapability,C.S0023-C,136,1
+CDMA,6F6B,3G Cipher and Integrity Keys,3GCIK,C.S0023-C,137,1
+CDMA,6F6C,De-Personalization Control Keys,DCK,C.S0023-C,138,1
+CDMA,6F6D,Group Identifier Level 1,GID1,C.S0023-C,139,1
+CDMA,6F6E,Group Identifier Level 2,GID2,C.S0023-C,140,1
+CDMA,6F6F,CDMA Co-operative Network List,CDMACNL,C.S0023-C,141,1
+CDMA,6F70,Home System Tag,HOME_TAG,C.S0023-C,143,1
+CDMA,6F71,Group Tag List,GROUP_TAG,C.S0023-C,144,1
+CDMA,6F72,Specific Tag List,SPECIFIC_TAG,C.S0023-C,145,1
+CDMA,6F73,Call Prompt List,CALL_PROMPT,C.S0023-C,146,1
+CDMA,6F74,Short Form EUIMID,SF_EUIMID,C.S0023-C,147,1
+MF,1F3E,,ICCRP,CMCC_GD,4,3
+MF,2F02,ICC Serial Number,ICCSN,CMCC,28,3
+MF,"""0101""",CMCC_M2M_SIMBINDME,,,,
+CMCC_M2M_SIMBINDME,FE01,一对多白名单绑定存储文件,,CMCC_M2M_SIMBINDME,16,2
+CMCC_M3M_SIMBINDME,FE02,存储IMEI和Terminal Profile文件,,CMCC_M3M_SIMBINDME,15,3
+CMCC_M3M_SIMBINDME,FE03,绑定类型文件,,CMCC_M4M_SIMBINDME,16,4

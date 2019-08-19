@@ -1,0 +1,53 @@
+﻿生成启动时间为 2019/8/7 17:30:28。
+     1>项目“C:\自写程序\CardManage\CardManage\CardManage.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Release\CardManage.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       PreBuildEvent:
+         copy C:\自写程序\AllUsedSource\Release\*.dll C:\自写程序\CardManage\Release\*.dll /y 
+         :VCEnd
+         C:\自写程序\AllUsedSource\Release\BasicConvert.dll
+         C:\自写程序\AllUsedSource\Release\CCR5.dll
+         C:\自写程序\AllUsedSource\Release\ExpAPDU.dll
+         C:\自写程序\AllUsedSource\Release\ExpFile.dll
+         C:\自写程序\AllUsedSource\Release\ParameterConvert.dll
+         C:\自写程序\AllUsedSource\Release\PcscReader.dll
+         已复制         6 个文件。
+       ClCompile:
+         所有输出均为最新。
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _MBCS /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\CardManage.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt MainFrm.cpp
+         MainFrm.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\自写程序\CardManage\Release\CardManage.exe" /INCREMENTAL:NO /NOLOGO PcscReader.lib CCR5.lib ExpFile.lib ParameterConvert.lib BasicConvert.lib ExpAPDU.lib /MANIFEST /ManifestFile:"Release\CardManage.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\自写程序\CardManage\Release\CardManage.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\自写程序\CardManage\Release\CardManage.lib" /MACHINE:X86 Release\CardManage.res
+         Release\Basconv.obj
+         Release\Basusc2.obj
+         Release\CAcroAXDocShim.obj
+         Release\CardManage.obj
+         Release\CardManageDoc.obj
+         Release\CardManageView.obj
+         Release\CExCtrl.obj
+         Release\C_SMS_ADN.obj
+         Release\CardInfomation.obj
+         Release\LeftPane.obj
+         Release\LeftView.obj
+         Release\MainFrm.obj
+         Release\OutputWnd.obj
+         Release\ReferenceWnd.obj
+         Release\SendCommand.obj
+         Release\stdafx.obj
+         Release\TermnalSetting.obj
+            正在创建库 C:\自写程序\CardManage\Release\CardManage.lib 和对象 C:\自写程序\CardManage\Release\CardManage.exp
+         正在生成代码
+         已完成代码的生成
+         CardManage.vcxproj -> C:\自写程序\CardManage\Release\CardManage.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\自写程序\CardManage\Release\CardManage.exe;#1" /manifest Release\CardManage.exe.intermediate.manifest "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       FinalizeBuildStatus:
+         正在删除文件“Release\CardManage.unsuccessfulbuild”。
+         正在对“Release\CardManage.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\自写程序\CardManage\CardManage\CardManage.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:09.59
