@@ -753,7 +753,7 @@ void _GetACFromARR( int iCommand,CString csARR,CString &csOutput,int* Other, boo
 
 	if (csOutput.IsEmpty())
 	{
-		csOutput = _T("DEFAULT");
+		csOutput = _T("ABSENCE");
 	}
 	//return csResult;
 
