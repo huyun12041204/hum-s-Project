@@ -1435,7 +1435,7 @@ void CSIMToolkit::OnLbnDblclkStkCommndListbox()
 
 #include "stdafx.h"
 #include "CardManage.h"
-#include "C:\自写程序\CardManage\CardManage\CardInfomation.h"
+#include "CardInfomation.h"
 #include "afxdialogex.h"
 
 
@@ -1583,7 +1583,7 @@ CString CCardKey::GetPIN(int iPIN)
 
 #include "stdafx.h"
 #include "CardManage.h"
-#include "C:\自写程序\CardManage\CardManage\CardInfomation.h"
+#include "CardInfomation.h"
 #include "afxdialogex.h"
 
 
@@ -1705,7 +1705,7 @@ void CCardKey::OnBnClickedKey()
 
 #include "stdafx.h"
 #include "CardManage.h"
-#include "C:\自写程序\CardManage\CardManage\CardInfomation.h"
+#include "CardInfomation.h"
 #include "afxdialogex.h"
 
 
@@ -1922,7 +1922,7 @@ CString CLocalInformation::GetLocalInforamtion()
 
 #include "stdafx.h"
 #include "CardManage.h"
-#include "C:\自写程序\CardManage\CardManage\CardInfomation.h"
+#include "CardInfomation.h"
 #include "afxdialogex.h"
 
 
@@ -2001,7 +2001,7 @@ END_MESSAGE_MAP()
 
 #include "stdafx.h"
 #include "CardManage.h"
-#include "C:\自写程序\CardManage\CardManage\CardInfomation.h"
+#include "CardInfomation.h"
 #include "afxdialogex.h"
 
 

@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "CardManage.h"
-#include "C:\×ÔÐ´³ÌÐò\CardManage\CardManage\CExCtrl.h"
+#include "CExCtrl.h"
 
 
 

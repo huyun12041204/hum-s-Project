@@ -125,6 +125,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_WM_PAINT()
 	ON_WM_SYSCOLORCHANGE()
 	ON_COMMAND(ID_Reference_Check, &CMainFrame::OnReferenceCheck)
+	ON_COMMAND(ID_Explain_Button, &CMainFrame::OnExplainButton)
 END_MESSAGE_MAP()
 
 // CMainFrame 构造/析构
@@ -6019,6 +6020,16 @@ BOOL CMainFrame::_ImportString(CString csString,CString& csFID,CString& csName, 
 
 }
 
+
+
+void CMainFrame::OnExplainButton()
+{
+	CExpDialog cNewExpDialog;
+	cNewExpDialog.DoModal();
+	// TODO: 在此添加命令处理程序代码
+}
+
+
 void CMainFrame::OnDestroy()
 {
 	CFrameWndEx::OnDestroy();
@@ -6142,6 +6153,8 @@ void CMainFrame::OnPaint()
 	//m_wndRibbonBar.OnDrawCaption();
 	CFrameWndEx::OnPaint();
 }
+
+
 
 
 

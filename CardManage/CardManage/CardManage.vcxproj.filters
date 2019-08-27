@@ -177,6 +177,9 @@
     <ClInclude Include="ReferenceWnd.h">
       <Filter>头文件\ExPane</Filter>
     </ClInclude>
+    <ClInclude Include="CExpDialog.h">
+      <Filter>头文件\ExDialog</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CardManage.cpp">
@@ -229,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="ReferenceWnd.cpp">
       <Filter>源文件\ExPane</Filter>
+    </ClCompile>
+    <ClCompile Include="CExpDialog.cpp">
+      <Filter>源文件\ExDialog</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

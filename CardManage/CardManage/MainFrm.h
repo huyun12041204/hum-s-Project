@@ -25,6 +25,7 @@ class CCardManageView;
 #include "TermnalSetting.h"
 #include "C_SMS_ADN.h"
 #include "ReferenceWnd.h"
+#include "CExpDialog.h"
 
 
 
@@ -542,6 +543,7 @@ public:
 	afx_msg void OnReformatflashButton();
 	afx_msg void OnPaint();
 	afx_msg void OnReferenceCheck();
+	afx_msg void OnExplainButton();
 };
 
 

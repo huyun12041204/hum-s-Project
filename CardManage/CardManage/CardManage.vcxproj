@@ -14,6 +14,7 @@
     <ProjectGuid>{8456D25B-9BBE-4094-B1E1-BE5BB63E35BA}</ProjectGuid>
     <RootNamespace>CardManage</RootNamespace>
     <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -21,6 +22,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -28,6 +30,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
     <UseOfMfc>Dynamic</UseOfMfc>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -43,6 +46,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\..\AllUsedSource;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\AllUsedSource\$(Configuration);$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -55,6 +59,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -81,7 +86,8 @@
       <Message>从默认目录 复制动态库到 当前目录</Message>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>copy C:\自写程序\AllUsedSource\$(IntDir)*.dll $(OutDir)*.dll /y </Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,7 +121,8 @@
       </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>copy C:\自写程序\AllUsedSource\$(IntDir)*.dll $(OutDir)*.dll /y </Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -162,6 +169,7 @@
     <ClInclude Include="CardManageDoc.h" />
     <ClInclude Include="CardManageView.h" />
     <ClInclude Include="CExCtrl.h" />
+    <ClInclude Include="CExpDialog.h" />
     <ClInclude Include="C_SMS_ADN.h" />
     <ClInclude Include="CardInfomation.h" />
     <ClInclude Include="LeftPane.h" />
@@ -182,6 +190,7 @@
     <ClCompile Include="CardManageDoc.cpp" />
     <ClCompile Include="CardManageView.cpp" />
     <ClCompile Include="CExCtrl.cpp" />
+    <ClCompile Include="CExpDialog.cpp" />
     <ClCompile Include="C_SMS_ADN.cpp" />
     <ClCompile Include="CardInfomation.cpp" />
     <ClCompile Include="LeftPane.cpp" />

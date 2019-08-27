@@ -125,7 +125,7 @@ BOOL CCardManageApp::InitInstance()
 	SetRegistryKey(_T("Giesecke&Devrient"));
 	LoadStdProfileSettings(4);  // 加载标准 INI 文件选项(包括 MRU)
 
-	InstallFont();
+	//InstallFont();
 
 	InitContextMenuManager();
 
