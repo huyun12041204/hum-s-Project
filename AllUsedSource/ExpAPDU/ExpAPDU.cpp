@@ -59,13 +59,70 @@ CExpAPDUApp theApp;
 BOOL CExpAPDUApp::InitInstance()
 {
 	CWinApp::InitInstance();
+
+
+	
+	SetRegistryKey(_T("Giesecke&Devrient"));
 	InitParamerter();
 	return TRUE;
 }
 BOOL CExpAPDUApp::InitParamerter()
 {
-	iLevel        = Def_APDUBASICINFOMATION|Def_APDUINFOMATION;
-	csK           = _T("00000000000000000000000000000000");
+
+	
+	;
+
+//	iLevel        = Def_APDUBASICINFOMATION|Def_APDUINFOMATION;
+
+	iLevel        = GetProfileInt("Setting","Level",Def_APDUBASICINFOMATION|Def_APDUINFOMATION);
+
+	//0348
+	csKIc         = GetProfileString("Setting\\Key\\0348\\KIc","00");
+	if (csKIc.IsEmpty())
+		csKIc = _T("11223344556677889900112233445566");
+
+	csKIc         = GetProfileString("Setting\\Key\\0348\\KID","00");
+	if (csKIc.IsEmpty())
+		csKIc = _T("11223344556677889900112233445566");
+
+	csKIc         = GetProfileString("Setting\\Key\\0348\\KIK","00");
+	if (csKIc.IsEmpty())
+		csKIc = _T("11223344556677889900112233445566");
+
+	//CMCC
+	csK1          = GetProfileString("Setting\\Key\\CMCC","K1");
+	if (csK1.IsEmpty())
+		csK1 = _T("11111111111111111111111111111111");
+
+
+	//CUC
+	CString csTemp;
+	csTemp          = GetProfileString("Setting\\Key\\CUC\\RFM","00");
+	if (csTemp.IsEmpty())
+		csK1 = _T("D82988A3FBB59A6B7429C911B0E65858");
+	csCURFMKey.Add(csTemp);
+	csTemp          = GetProfileString("Setting\\Key\\CUC\\RFM","01");
+	if (csTemp.IsEmpty())
+		csK1 = _T("FE20AA0FADC918ABA3CBD601D9D027F2");
+	csCURFMKey.Add(csTemp);
+	csTemp          = GetProfileString("Setting\\Key\\CUC\\RFM","02");
+	if (csTemp.IsEmpty())
+		csK1 = _T("865DA51D9CE035348F834942C6E88EE2");
+	csCURFMKey.Add(csTemp);
+	csTemp          = GetProfileString("Setting\\Key\\CUC\\RFM","03");
+	if (csTemp.IsEmpty())
+		csK1 = _T("0E0C60B1F82A741B0D5CE2D29FCD3E24");
+	csCURFMKey.Add(csTemp);
+	csTemp          = GetProfileString("Setting\\Key\\CUC\\RFM","04");
+	if (csTemp.IsEmpty())
+		csK1 = _T("46544681A599B3022AB5852A45E93B8C");
+	csCURFMKey.Add(csTemp);
+
+
+
+
+
+	/*csK           = _T("00000000000000000000000000000000");
 	csK1          = _T("11111111111111111111111111111111");
 	csKIc         = _T("11223344556677889900112233445566");
 	csDeriveData  = _T("0011111111111111");
@@ -73,7 +130,7 @@ BOOL CExpAPDUApp::InitParamerter()
 	csCURFMKey .Add("FE20AA0FADC918ABA3CBD601D9D027F2");
 	csCURFMKey .Add("865DA51D9CE035348F834942C6E88EE2");
 	csCURFMKey .Add("0E0C60B1F82A741B0D5CE2D29FCD3E24");
-	csCURFMKey .Add("46544681A599B3022AB5852A45E93B8C");
+	csCURFMKey .Add("46544681A599B3022AB5852A45E93B8C");*/
 	
 	ResetParameter();
 	return TRUE;
@@ -81,11 +138,13 @@ BOOL CExpAPDUApp::InitParamerter()
 
 void CExpAPDUApp::ResetParameter()
 {
+	
 	iCurrentDF = _DEF_Card;
 	iPreIns    = NULL;
 	iPreSPI    = NULL;
 	iOperater  = NULL ;
 	csMsgArray.RemoveAll();
+
 
 }
 void SetPreCommand(int iCode)
@@ -93,7 +152,7 @@ void SetPreCommand(int iCode)
 	theApp.iPreIns  = iCode;
 //	((CExpAPDUApp*)AfxGetApp())->iPreIns = iCode;
 }
-int GetPreCommand()
+int  GetPreCommand()
 {
 	return theApp.iPreIns ;
 }
@@ -182,6 +241,63 @@ void SetK1(CString csInput)
 	theApp.csK1 = csInput;
 }
 
+BOOL __APDUIsComplete(CString csAPDU)
+{
+	  if (!_IsAllHex(csAPDU))
+			 return FALSE;
+		int iLen = csAPDU.GetLength();
+		if (iLen <10)
+			return FALSE;
+
+		if (iLen != (_CString2Int(csAPDU.Mid(8,2))*2   +14 ))
+			return FALSE;
+		return TRUE;
+}
+
+BOOL __P3IsLe(CString csAPDU)
+{
+	    int iIns,iP1,iP2;
+			BOOL bP3IsLe = TRUE;
+
+			iIns       = _CString2Int(csAPDU.Mid(2,2)) ;
+			iP1        = _CString2Int(csAPDU.Mid(4,2)) ;
+			iP2        = _CString2Int(csAPDU.Mid(6,2)) ;
+
+				switch(iIns)
+				{
+				case 0xA4:
+					if ((iP1 == 3)&&(iP2 == 4))
+						bP3IsLe = TRUE ;
+					else
+						bP3IsLe = FALSE;
+					break;
+				case 0x75:
+					if ((iP1&4)== 0)
+						bP3IsLe = TRUE ;
+					else
+						bP3IsLe = FALSE;
+					break;
+				case 0xCB:
+					if ((iP2&0xDF)== 0)
+						bP3IsLe = TRUE ;
+					else
+						bP3IsLe = FALSE;
+					break;
+				case 0x70:
+				case 0x84:
+				case 0xF2:
+				case 0xC0:
+				case 0x12:
+				case 0xFA:
+				case 0xB2:
+				case 0xB0: bP3IsLe = TRUE ;break;
+				case 0xF8: bP3IsLe = TRUE ;break;
+				default:   bP3IsLe = FALSE;break;
+				}
+
+				return bP3IsLe;
+
+}
 
 BOOL _ExplainSW              (int iSW, CString& csOutput)
 {
@@ -3807,8 +3923,8 @@ CString _TranslateDateTimeAndTimeZone( CString csInput )
 	csText = csText.Mid(0,4)+_T("-")+
 		csText.Mid(4,2)+_T("-")+
 		csText.Mid(6,2)+_T(" ")+
-		csText.Mid(8,2)+_T(" \\- ")+
-		csText.Mid(10,2)+_T(" \\- ")+
+		csText.Mid(8,2)+_T(" - ")+
+		csText.Mid(10,2)+_T(" - ")+
 		csText.Mid(12,2)+_T(" ");
 	csText+= csInput.Right(2);
 	return csText;

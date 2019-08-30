@@ -126,6 +126,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_WM_SYSCOLORCHANGE()
 	ON_COMMAND(ID_Reference_Check, &CMainFrame::OnReferenceCheck)
 	ON_COMMAND(ID_Explain_Button, &CMainFrame::OnExplainButton)
+	ON_COMMAND(ID_ReConvert_button, &CMainFrame::OnReconvertbutton)
 END_MESSAGE_MAP()
 
 // CMainFrame 构造/析构
@@ -2105,7 +2106,7 @@ CString CMainFrame::_TestCaseGetBinaryData(int iSize,bool bUICC)
 		iOffset  += 0xFF;
 
 		if (csResp.Right(04) == _T("9000"))
-			csResult += csResp.Left(0xFF*2);
+			csResult += csResp.Left(csResp.GetLength()-4);
 		else
 		{
 			csResult.Empty();
@@ -2113,7 +2114,7 @@ CString CMainFrame::_TestCaseGetBinaryData(int iSize,bool bUICC)
 		}
 	}
 
-	return csResult.Mid(0,csResult.GetLength()-4);
+	return csResult.Mid(0,iSize*2);
 }
 CString CMainFrame::_TestCaseReadRecord(int iNumber,int iLength,bool bUICC)
 {
@@ -6092,7 +6093,155 @@ void CMainFrame::OnReformatflashButton()
 		m_wndGetFlash.DisplayFlashData(csFlash);
 	}
 
+
 }
+
+
+//************************************
+// Method:    iGetConvertDataTag
+// FullName:  iGetConvertDataTag
+// Access:    public 
+// Returns:   int 0 注释; 1 纯数据；2 APDU HEAD;3 APDU DATA;4 APDU SW;
+//                5 ATR 6 PPS;0xF 未知
+// Qualifier:
+// Parameter: CString String
+//************************************
+int iGetConvertDataTag(CString csInput,CString&csOutput)
+{
+	CString csTag;
+	int iTagLen;
+
+	csOutput.Empty();
+	if (csInput.Find("//")>=0)
+		return 0;
+
+	iTagLen = csInput.Find(":");
+	if (iTagLen < 0)
+	{
+		csOutput = csInput;
+		return 1;
+	}
+
+    
+	csTag    = csInput.Left(iTagLen);
+	csOutput = csInput.Mid(iTagLen+1);
+
+	if (csTag.Compare("APDU") == 0)
+		return 2;
+	else if(csTag.Compare("DATA") == 0)
+		return 3;
+	else if(csTag.Compare("SW") == 0)
+		return 4;
+	else if(csTag.Compare("ATR") == 0)
+		return 5;
+	else if(csTag.Compare("PPS") == 0)
+		return 6;
+
+	return 0xF;
+
+}
+
+int __ConvertData2APDU( CString csCurrent,CString* csAPDU )
+{
+
+
+	CString csConText;
+	int iTag;
+	int iRet = 0;
+	iTag = iGetConvertDataTag(csCurrent,csConText);
+
+	switch(iTag)
+	{
+	case 1: 	   
+	case 2:
+	case 3:
+	case 4:
+	case 5: *csAPDU = (*csAPDU) + csConText;break;
+	case 6: *csAPDU = (*csAPDU) + csConText;
+		    iRet = 0x10;       break;
+	default:iRet = 0x10;	   break;
+	}
+	return iTag|iRet;
+}
+
+void CMainFrame::OnReconvertbutton()
+{
+  CString csFilePath,csFileData;
+  CFileDialog CFDataFile(TRUE,_T("*.txt|.txt"),NULL,4|1,_T("(*.txt)|*.txt||"));
+  CStdioFile CSFFile;
+  CString csTemp;
+//  csFlash.Empty();
+
+  if ( CFDataFile.DoModal() == IDOK)
+
+  {
+	csFilePath = CFDataFile.GetPathName();
+
+	if (CSFFile.Open(csFilePath,CFile::modeRead|CFile::typeBinary))
+	{
+	  ULONGLONG lSize = CSFFile.GetLength();
+	  WORD wType;
+
+	  CSFFile.SeekToBegin();
+	  CSFFile.Read(&wType,2);
+	  WCHAR* wbuff; 
+
+	  wbuff = new WCHAR[(UINT)lSize];
+
+	  CSFFile.Read(wbuff,(UINT)lSize-2);
+
+	  csTemp = wbuff;
+
+	  delete wbuff;
+	  int lOffset = 0;
+	  int iCurrent= 0;
+	  int iTYPE;
+	  int iPTYPE = 0;
+	  
+	  CString csCurrent, csAPDU;
+	  CStringArray csOutput;
+
+	
+	  do 
+	  {
+		iCurrent = csTemp.Find(_T("\r\n"),lOffset);
+
+
+		if (iCurrent > 0)
+		{
+		  csCurrent = csTemp.Mid(lOffset,iCurrent - lOffset);
+		  lOffset = iCurrent +2;
+		}
+		else
+		   csCurrent = csTemp.Mid(lOffset);
+
+		iTYPE = __ConvertData2APDU(csCurrent,&csAPDU);
+
+		if ((iTYPE&0x10)!= 0)
+		{
+			_DeleteEnterSpace(csAPDU);
+
+			if (!csAPDU.IsEmpty())
+				m_wndGetFlash.__DisplayFlashData(csAPDU);
+			csAPDU.Empty();
+		}
+		else if (iPTYPE != 0) iPTYPE = iTYPE;
+
+	
+	
+		
+	  } while (iCurrent > 0);
+
+	  CSFFile.Close();
+	}
+	/*_DeleteEnterSpace(csFlash);
+	m_wndGetFlash.ResetOffset();
+	m_wndGetFlash.DisplayFlashData(csFlash);*/
+  }
+}
+
+
+
 BOOL CMainFrame::PreTranslateMessage(MSG* pMsg)
 {
 	// TODO: 在此添加专用代码和/或调用基类

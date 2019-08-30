@@ -45,7 +45,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>..\..\AllUsedSource;$(IncludePath)</IncludePath>
-    <LibraryPath>..\..\AllUsedSource\$(Configuration);$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(OutDir);$(LibraryPath)</LibraryPath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -163,15 +163,16 @@
   <ItemGroup>
     <ClInclude Include="..\..\AllUsedSource\Basconv.h" />
     <ClInclude Include="..\..\AllUsedSource\Basusc2.h" />
+    <ClInclude Include="..\..\AllUsedSource\ListBoxXI.h" />
     <ClInclude Include="CAcroAXDocShim.h" />
     <ClInclude Include="CApplication.h" />
     <ClInclude Include="CardManage.h" />
     <ClInclude Include="CardManageDoc.h" />
     <ClInclude Include="CardManageView.h" />
     <ClInclude Include="CExCtrl.h" />
-    <ClInclude Include="CExpDialog.h" />
     <ClInclude Include="C_SMS_ADN.h" />
     <ClInclude Include="CardInfomation.h" />
+    <ClInclude Include="ExpDialog.h" />
     <ClInclude Include="LeftPane.h" />
     <ClInclude Include="LeftView.h" />
     <ClInclude Include="MainFrm.h" />
@@ -185,14 +186,15 @@
   <ItemGroup>
     <ClCompile Include="..\..\AllUsedSource\Basconv.cpp" />
     <ClCompile Include="..\..\AllUsedSource\Basusc2.cpp" />
+    <ClCompile Include="..\..\AllUsedSource\ListBoxXI.cpp" />
     <ClCompile Include="CAcroAXDocShim.cpp" />
     <ClCompile Include="CardManage.cpp" />
     <ClCompile Include="CardManageDoc.cpp" />
     <ClCompile Include="CardManageView.cpp" />
     <ClCompile Include="CExCtrl.cpp" />
-    <ClCompile Include="CExpDialog.cpp" />
     <ClCompile Include="C_SMS_ADN.cpp" />
     <ClCompile Include="CardInfomation.cpp" />
+    <ClCompile Include="ExpDialog.cpp" />
     <ClCompile Include="LeftPane.cpp" />
     <ClCompile Include="LeftView.cpp" />
     <ClCompile Include="MainFrm.cpp" />

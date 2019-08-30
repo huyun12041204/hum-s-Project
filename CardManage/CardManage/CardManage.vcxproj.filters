@@ -177,8 +177,11 @@
     <ClInclude Include="ReferenceWnd.h">
       <Filter>头文件\ExPane</Filter>
     </ClInclude>
-    <ClInclude Include="CExpDialog.h">
+    <ClInclude Include="ExpDialog.h">
       <Filter>头文件\ExDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\AllUsedSource\ListBoxXI.h">
+      <Filter>头文件\ExCtrl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -233,8 +236,11 @@
     <ClCompile Include="ReferenceWnd.cpp">
       <Filter>源文件\ExPane</Filter>
     </ClCompile>
-    <ClCompile Include="CExpDialog.cpp">
+    <ClCompile Include="ExpDialog.cpp">
       <Filter>源文件\ExDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\AllUsedSource\ListBoxXI.cpp">
+      <Filter>源文件\ExCtrl</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

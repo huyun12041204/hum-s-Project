@@ -1,4 +1,8 @@
 // ExpAPDU.h : ExpAPDU DLL 的主头文件
+
+#ifndef _Explain_APDU
+#define  _Explain_APDU
+
 #include "..\ParameterConvert\ParameterConvert\ParameterConvert.h"
 #include "UNI_Aut_Algorithm.h"
 
@@ -259,6 +263,8 @@ void SetPreCommand(int iCode);
 void SetCurrentDF (int iMark);
 void ResetParameter();
 ExpAPDU_API void SetExplainLevel(int iCode);
+ExpAPDU_API BOOL  __APDUIsComplete(CString csAPDU);
+ExpAPDU_API BOOL  __P3IsLe(CString csAPDU);
 ExpAPDU_API BOOL _ExplainSW  (int iSW, CString& csOutput);
 ExpAPDU_API BOOL _ExplainIns (int iIns,CString csInput ,CString& csOutput);
 ExpAPDU_API BOOL _ExplainAPDU(CString csSend,CString csResp,CStringArray& csOutput);
@@ -357,3 +363,6 @@ ExpAPDU_API BOOL _ExplainStatus(CString csSend,CStringArray&csOutput);
  BOOL _ExplainCDMASMSTPDU(CString csInput, CStringArray&csOutput);
  BOOL _ExplainSMSPointtoPoint(CString csInput, CStringArray&csOutput);
  BOOL _ExplainBearData(CString csInput, CStringArray&csOutput);
+
+
+ #endif 

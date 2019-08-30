@@ -11,7 +11,7 @@ m_pszData
 // 保留所有权利。
 
 #include "stdafx.h"
-
+#include "CardManage.h"
 #include "OutputWnd.h"
 #include "Resource.h"
 #include "MainFrm.h"
@@ -83,6 +83,7 @@ int COutputWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	ASSERT(bNameValid);
 	m_wndTabs.AddTab(&m_wndOutputAll, strTabName, (UINT)2);
 
+	SetImageList();
 	// 使用一些虚拟文本填写输出选项卡(无需复杂数据)
 	return 0;
 }
@@ -93,6 +94,7 @@ void COutputWnd::OnSize(UINT nType, int cx, int cy)
 	// 选项卡控件应覆盖整个工作区:
 	m_wndTabs.SetWindowPos (NULL, -1, -1, cx, cy, SWP_NOMOVE | SWP_NOACTIVATE | SWP_NOZORDER);
 }
+
 void COutputWnd::AdjustHorzScroll(CListBox& wndListBox)
 {
 	CClientDC dc(this);
@@ -228,7 +230,6 @@ void COutputWnd::PrintInformation( CString csSend,CString csResp )
 		m_wndOutputAll .FomatAddString(csText);	
 	}
 }
-
 void COutputWnd:: PrintATRInformation(CString csATR)
 {
 
@@ -247,13 +248,46 @@ void COutputWnd:: PrintATRInformation(CString csATR)
 	}
 	
 }
+void COutputWnd::SetImageList()
+{
+
+
+	m_OutputImages.DeleteImageList();
+
+	//	UINT uiBmpId = theApp.m_bHiColorIcons ? IDB_FILE_VIEW_24 : IDB_FILE_VIEW;
+
+	UINT uiBmpId = IDB_BITMAP3;
+
+	CBitmap bmp;
+	if (!bmp.LoadBitmap(uiBmpId))
+	{
+		TRACE(_T("无法加载位图: %x\n"), uiBmpId);
+		ASSERT(FALSE);
+		return;
+	}
+
+	BITMAP bmpObj;
+	bmp.GetBitmap(&bmpObj);
+
+	UINT nFlags = ILC_MASK;
+
+	nFlags |= (theApp.m_bHiColorIcons) ? ILC_COLOR24 : ILC_COLOR4;
+
+	m_OutputImages.Create(12, bmpObj.bmHeight, nFlags, 0, 0);
+	m_OutputImages.Add(&bmp, RGB(0, 0, 0));
+
+	m_wndOutputAll.SetImageList(&m_OutputImages);
+	m_wndOutputOper.SetImageList(&m_OutputImages);
+	m_wndOutputAPDU.SetImageList(&m_OutputImages);
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 // COutputList1
 
 
 
-BEGIN_MESSAGE_MAP(COutputList, CListBox)
+BEGIN_MESSAGE_MAP(COutputList, CListBoxXI)
 	ON_COMMAND(ID_EDIT_COPY, OnEditCopy)
 	ON_COMMAND(ID_EDIT_CLEAR, OnEditClear)
 	ON_COMMAND(ID_VIEW_OUTPUTWND, OnViewOutput)
@@ -264,6 +298,7 @@ BEGIN_MESSAGE_MAP(COutputList, CListBox)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONDBLCLK()	
 	ON_WM_SETFOCUS()
+	ON_WM_MOUSEWHEEL()
 END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // COutputList 消息处理程序
@@ -421,6 +456,7 @@ void COutputList::FomatAddString(CString csText,int iNT)
 {
 	
 	CStringArray csArray;
+	CString csCur;
 	int iCount = 0 ;
 	switch(iNT)
 	{
@@ -459,20 +495,28 @@ void COutputList::FomatAddString(CString csText,int iNT)
 
 			_APDUExplainFormat(csName);
 		}
-		iCount+= FomatDesription(csName+csInfo,csArray);
+		iCount+= FomatDesription(csName,csInfo,csArray);
 	
 		break;
 	}
 
 
 	for ( int i= 0 ; i <iCount;i++)
-		AddString(csArray.GetAt(i));
+	{
+		//没有发现: 则表示为后续
+		csCur = csArray.GetAt(i);
+		if (csCur.Find(_T(":"))<0)
+		    AddString(csCur,0);
+		else
+			AddString(csArray.GetAt(i),iNT);
 
+		  
+	}
 
 	if ((iNT == _DEF_APDU_RESP)||
 		(iNT == _DEF_APDU_ATR)||
 		(iNT == _DEF_APDU_PPS))
-		AddString(_T("---------------------------------------------------------------------------------------"));
+		AddString(_T("---------------------------------------------------------------------------------------"),-1);
 
 
 }
@@ -490,7 +534,7 @@ int  COutputList::FomatAPDU(CString csText,CStringArray& csArray,int iNT)
 	{
 		csTemp  = csText.Right(4);
 		_AppendSpace(csTemp);
-		csSW    =  _T("SW:   ")+csTemp;
+		csSW    =  _T("SW:  ")+csTemp;
 		csText  = csText.Left(csText.GetLength() -4);
 	}
 
@@ -527,10 +571,42 @@ int  COutputList::FomatAPDU(CString csText,CStringArray& csArray,int iNT)
 
 	return iCount;
 }
-int  COutputList::FomatDesription(CString csText,CStringArray& csArray)
+int COutputList::FomatDesription(CString csName, CString csText,CStringArray& csArray)
 {
+	int iNum= 0;
+	int iOff = 0;
+	int iLength = csText.GetLength();
+	int iSign   =0x40; 
 
-	CString csFormat = _T(" ");
+	if (_IsAllHex(csText))
+	{
+		CString csEmptyName;
+		csEmptyName.Empty();
+		_APDUExplainFormat(csEmptyName);
+
+		do 
+		{
+			if (iNum == 0)
+				csArray.Add(csName+csText.Mid(iNum*0x40,0x40));
+			else
+				csArray.Add(csEmptyName+csText.Mid(iNum*0x40,0x40));
+
+			iOff += 0x40;
+			iNum += 1;
+		} while (iLength > iOff);
+		return iNum;
+	}
+	else
+	{
+		csArray.Add(csName+csText);
+		return 1;
+	}
+
+	
+
+	
+
+	/*CString csFormat = _T(" ");
 	CString csFText;
 	int iOff = 0;
 	int iLength;
@@ -542,13 +618,13 @@ int  COutputList::FomatDesription(CString csText,CStringArray& csArray)
 
 	do 
 	{
-		csArray.Add(csFormat+csText.Mid(iOff ,69));
-		iOff += 69;
-		csFormat = csFText;
-		iNum += 1;
-	} while (iLength > iOff);
+	csArray.Add(csFormat+csText.Mid(iOff ,69));
+	iOff += 69;
+	csFormat = csFText;
+	iNum += 1;
+	} while (iLength > iOff);*/
 
-	return iNum;
+	//return iNum;
 }
 void COutputList::RemvoeAllSelect()
 {
@@ -572,6 +648,17 @@ void COutputList::RemvoeAllSelect()
 	}
 
 }
+
+UINT COutputList::ItemFromPoint(CPoint pt, BOOL& bOutside)
+{
+	UINT iItem = CListBox::ItemFromPoint(pt,bOutside);
+	UINT iTop  = GetTopIndex();
+	iTop       = iTop/0xFFFF;
+
+
+
+	return iTop*0xFFFF + iItem;
+}
 void COutputList::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
@@ -581,8 +668,8 @@ void COutputList::OnLButtonDown(UINT nFlags, CPoint point)
 	SetFocus();
 
 	BOOL bOut;
-	int iSelItem;
-	iSelItem = CListBox::ItemFromPoint(point,bOut);
+	int iSelItem = ItemFromPoint(point,bOut);
+
 	if (bOut)
 	{
 		RemvoeAllSelect();
@@ -844,6 +931,7 @@ int CGetFlashWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		                  WS_CHILD|WS_VISIBLE|WS_HSCROLL| 
 	                      WS_VSCROLL|WS_CLIPSIBLINGS|WS_CLIPCHILDREN;
 
+
 	if (!m_wndGetFlash.Create(dwStyle, rectDummy, this, 1))
 
 	{
@@ -882,7 +970,6 @@ void CGetFlashWnd::AdjustHorzScroll(CListBox& wndListBox)
 	wndListBox.SetHorizontalExtent(cxExtentMax);
 	dc.SelectObject(pOldFont);
 }
-
 
 
 void CGetFlashWnd::UpdateFonts()
@@ -1087,10 +1174,78 @@ void CGetFlashWnd::DisplayFlashData(CString csInput)
 		
 }
 
+void CGetFlashWnd::RemoveAll(CString csAPDU)
+{
+	m_wndGetFlash.ResetContent();
+}
+
+
+void CGetFlashWnd::__DisplayFlashData(CString csAPDU)
+{
+
+	CString csClass;
+	CString csCommand;
+	CString csRespons;
+	CStringArray csInfomation;
+
+	csInfomation.RemoveAll();
+
+	csClass = csAPDU.Mid(00,2);
+
+	switch(_CString2Int(csClass))
+	{
+	case 0x3B:
+
+		if (ExplainATR(csAPDU,csInfomation))
+		{
+			for (int i = 0 ; i < csInfomation.GetCount(); i++)
+				m_wndGetFlash.FomatAddString(csInfomation.GetAt(i));
+		}
+		m_wndGetFlash.FomatAddString(csAPDU,_DEF_APDU_ATR);
+
+		break;
+	case 0xFF:
+		m_wndGetFlash.FomatAddString(csAPDU,_DEF_APDU_PPS);
+		break;
+	default:
+
+
+
+		if (__P3IsLe(csAPDU))
+		{
+			csCommand = csAPDU.Mid(0,10);
+			csRespons = csAPDU.Mid(10);
+		}
+		else 
+		{	csCommand = csAPDU.Left(csAPDU.GetLength() -4);
+		    csRespons = csAPDU.Right(4);
+		}
+		
+		if (_ExplainAPDU(csCommand,csRespons,csInfomation))
+		{
+
+			for (int i = 0 ; i < csInfomation.GetCount(); i++)
+				m_wndGetFlash.FomatAddString(csInfomation.GetAt(i));
+			m_wndGetFlash.FomatAddString(csCommand,_DEF_APDU_SEND);
+			m_wndGetFlash.FomatAddString(csRespons,_DEF_APDU_RESP);
+		}
+	}
+
+
+	
+	m_wndGetFlash.SetCaretIndex(m_wndGetFlash.GetCount());
+
+
+
+}
+
 // CGetFlashWnd 消息处理程序
+BOOL COutputList::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
 
 
+	BOOL bRet =CListBox::OnMouseWheel(nFlags, zDelta, pt);
 
-
-
-
+	return bRet;
+}

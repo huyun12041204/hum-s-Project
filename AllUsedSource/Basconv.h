@@ -1,6 +1,8 @@
 #include "ParameterConvert/ParameterConvert/ParameterConvert.h"
 
 
+#ifndef __Bascovert
+#define  __Bascovert
 
 //
 //int _GetMarkNumber(CString csData,CString csMark);
@@ -257,3 +259,5 @@ CString TransationUEMode(CString csData);
   _variant_t CString2_variant_t(int iType,CString csInput);
   _variant_t Int2_variant_t(int iType,int iInput);
   UINT uLong2Byte(ULONG32 ulData,BYTE*Byte,UINT uiByteLen = 4);
+
+#endif

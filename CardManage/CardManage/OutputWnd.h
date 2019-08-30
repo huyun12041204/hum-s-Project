@@ -11,15 +11,18 @@
 
 #pragma once
 #include "..\AllUsedSource\ExpAPDU\ExpAPDU.h"
+//#include "..\AllUsedSource\ListBoxXI.h"
+#include "ListBoxXI.h"
 
 /////////////////////////////////////////////////////////////////////////////
 // COutputList 窗口
-#define  _DEF_APDU_ATR     01
-#define  _DEF_APDU_SEND    03
-#define  _DEF_APDU_RESP    04
-#define  _DEF_APDU_PPS     02
+#define  _DEF_APDU_ATR     1
+#define  _DEF_APDU_PPS     2
+#define  _DEF_APDU_SEND    3
+#define  _DEF_APDU_RESP    4
 
-#define  _DEF_DESCRIPTTION 11
+
+#define  _DEF_DESCRIPTTION 8
 
 #define _DEF_FORMATE_LENGTH 400
 
@@ -27,7 +30,7 @@
 
 #define  DEF_OUTPUTLIST_HOTKEY_C_C 10100
 
-class COutputList : public CListBox
+class COutputList : public CListBoxXI
 {
 // 构造
 public:
@@ -55,8 +58,9 @@ public:
 	void FomatAddString(CString csText,int iNT = _DEF_DESCRIPTTION);
 	void FomatATR(CString csText);
 	int  FomatAPDU(CString csText,CStringArray& csArray,int iNT);
-	int  FomatDesription(CString csText,CStringArray& csArray);
+	int FomatDesription(CString csName, CString  csText,CStringArray& csArray);
 	void RemvoeAllSelect();
+	UINT ItemFromPoint(CPoint pt, BOOL& bOutside);
 	//	afx_msg void OnLbnSelchange();
 
 	int PreSelect(int iIndex, BOOL bSel);
@@ -70,6 +74,7 @@ public:
 	void AdjustHorzScroll();
 	long     GetTextWidth(CString csText);
 	CString GetSpaceText(long lTextWidth);
+	afx_msg BOOL OnMouseWheel(UINT nFlags, short zDelta, CPoint pt);
 };
 
 class COutputWnd : public CDockablePane
@@ -82,7 +87,7 @@ public:
 // 特性
 protected:
 	CMFCTabCtrl	m_wndTabs;
-
+	CImageList  m_OutputImages;
 	COutputList m_wndOutputOper;
 	COutputList m_wndOutputAPDU;
 	COutputList m_wndOutputAll;
@@ -106,7 +111,7 @@ protected:
 
 public:
 //	afx_msg void OnPaintClipboard(CWnd* pClipAppWnd, HGLOBAL hPaintStruct);
-
+	void SetImageList();
 	void PrintTime2Output(long lTime);
 	void PrintAPDU(CString csSend,CString csResp);
 	void PrintInformation(CString csSend,CString csResp);
@@ -140,7 +145,11 @@ public:
 	void SetFlashData(CString csInput);
 	void ResetOffset();
 	BOOL GetAPDUFromData(CString csText, CString& csSend, CString &csResp,int* iOffset);
+
+	void RemoveAll(CString csAPDU);
 	void DisplayFlashData(CString csInput);
+	void __DisplayFlashData(CString csInput);
+	
 };
 
 
