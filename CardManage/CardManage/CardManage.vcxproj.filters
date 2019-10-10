@@ -118,6 +118,9 @@
     <None Include="ClassDiagram3.cd" />
     <None Include="..\..\AllUsedSource\CCR5\CCR5.vcproj" />
     <None Include="..\..\AllUsedSource\CCR5\CCR5.vcxproj" />
+    <None Include="res\Output_View.bmp">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CardManage.h">

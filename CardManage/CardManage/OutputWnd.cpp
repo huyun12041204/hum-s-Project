@@ -1,4 +1,4 @@
-m_pszData
+//m_pszData
 // 这段 MFC 示例源代码演示如何使用 MFC Microsoft Office Fluent 用户界面 
 // (“Fluent UI”)。该示例仅供参考，
 // 用以补充《Microsoft 基础类参考》和 
@@ -135,30 +135,8 @@ void COutputWnd::Print2Output(CString csLog,CString csSend,CString csResp)
 	if (!csSend.IsEmpty())
 	{
 		PrintAPDU(csSend,csResp);
-		//if (csSend.Left(1) == _T("$"))
-		//{
-		//	//m_wndOutputAPDU.AddString(_T("ATR : ")+csResp);
-		//	//m_wndOutputAll.AddString (_T("ATR : ")+csResp);
-		//	
-		//}
-		//else 
-		//{
-		//	_AppendSpace(csSend);	
-		//	_AppendSpace(csResp);
-		//	m_wndOutputAPDU.AddString(_T("Send : ")+csSend);
-		//	m_wndOutputAPDU.AddString(_T("Resp : ")+csResp);
-		//	m_wndOutputAll.AddString(_T("Send : ")+csSend);
-		//	m_wndOutputAll.AddString(_T("Resp : ")+csResp);
-	
-		//}
+
 	}
-
-
-
-	//int iRet;
-	//iRet = m_wndOutputAll .SetCaretIndex(m_wndOutputAll .GetCount());
-	//iRet = m_wndOutputAPDU.SetCaretIndex(m_wndOutputAPDU.GetCount());
-	//iRet = m_wndOutputOper.SetCaretIndex(m_wndOutputOper.GetCount());
 }
 void COutputWnd::PrintTime2Output(long lTime)
 {
@@ -168,7 +146,7 @@ void COutputWnd::PrintTime2Output(long lTime)
 		CString csTime;
 		csTime.Format("Time : %d us",lTime);
 		m_wndOutputAll.AddString(csTime);
-		m_wndOutputAll.SetCaretIndex(m_wndOutputAll.GetCount());
+		m_wndOutputAll.SetCaretIndex(m_wndOutputAll.GetCount()-1);
 	}
 
 	//m_wndOutputAll.AddString(_T("---------------------------------------------------------------------------------------"));
@@ -208,9 +186,9 @@ void COutputWnd::PrintAPDU(CString csSend,CString csResp)
 	}
 
 	int iRet;
-	iRet = m_wndOutputAll .SetCaretIndex(m_wndOutputAll .GetCount());
-	iRet = m_wndOutputAPDU.SetCaretIndex(m_wndOutputAPDU.GetCount());
-	iRet = m_wndOutputOper.SetCaretIndex(m_wndOutputOper.GetCount());
+	iRet = m_wndOutputAll .SetCaretIndex(m_wndOutputAll .GetCount()-1);
+	iRet = m_wndOutputAPDU.SetCaretIndex(m_wndOutputAPDU.GetCount()-1);
+	iRet = m_wndOutputOper.SetCaretIndex(m_wndOutputOper.GetCount()-1);
 
 }
 void COutputWnd::PrintInformation( CString csSend,CString csResp )
@@ -225,8 +203,7 @@ void COutputWnd::PrintInformation( CString csSend,CString csResp )
 	for (int i = 0 ; i < iCount; i++)
 	{
 		csText = csInformation.GetAt(i);
-		if (i==0)
-			m_wndOutputOper.FomatAddString(csText);
+		if (i==0) m_wndOutputOper.FomatAddString(csText);
 		m_wndOutputAll .FomatAddString(csText);	
 	}
 }
@@ -276,9 +253,13 @@ void COutputWnd::SetImageList()
 	m_OutputImages.Create(12, bmpObj.bmHeight, nFlags, 0, 0);
 	m_OutputImages.Add(&bmp, RGB(0, 0, 0));
 
+#ifdef _USE_LISTBOXXI 
+
+
 	m_wndOutputAll.SetImageList(&m_OutputImages);
 	m_wndOutputOper.SetImageList(&m_OutputImages);
 	m_wndOutputAPDU.SetImageList(&m_OutputImages);
+#endif
 }
 
 
@@ -286,8 +267,13 @@ void COutputWnd::SetImageList()
 // COutputList1
 
 
-
+#ifdef _USE_LISTBOXXI
 BEGIN_MESSAGE_MAP(COutputList, CListBoxXI)
+#else
+BEGIN_MESSAGE_MAP(COutputList, CListBox)
+#endif
+
+
 	ON_COMMAND(ID_EDIT_COPY, OnEditCopy)
 	ON_COMMAND(ID_EDIT_CLEAR, OnEditClear)
 	ON_COMMAND(ID_VIEW_OUTPUTWND, OnViewOutput)
@@ -505,18 +491,36 @@ void COutputList::FomatAddString(CString csText,int iNT)
 	{
 		//没有发现: 则表示为后续
 		csCur = csArray.GetAt(i);
+#ifdef _USE_LISTBOXXI
 		if (csCur.Find(_T(":"))<0)
-		    AddString(csCur,0);
+			AddString(csCur,0);
 		else
 			AddString(csArray.GetAt(i),iNT);
+#else
+		if (csCur.Find(_T(":"))<0)
+			AddString(csCur);
+		else
+			AddString(csArray.GetAt(i));
+#endif
+
 
 		  
 	}
 
+
+#ifdef _USE_LISTBOXXI
 	if ((iNT == _DEF_APDU_RESP)||
 		(iNT == _DEF_APDU_ATR)||
 		(iNT == _DEF_APDU_PPS))
 		AddString(_T("---------------------------------------------------------------------------------------"),-1);
+#else
+	if ((iNT == _DEF_APDU_RESP)||
+		(iNT == _DEF_APDU_ATR)||
+		(iNT == _DEF_APDU_PPS))
+		AddString(_T("---------------------------------------------------------------------------------------"));
+#endif
+
+
 
 
 }
@@ -533,7 +537,7 @@ int  COutputList::FomatAPDU(CString csText,CStringArray& csArray,int iNT)
 	if (iNT == _DEF_APDU_RESP)
 	{
 		csTemp  = csText.Right(4);
-		_AppendSpace(csTemp);
+		//_AppendSpace(csTemp);
 		csSW    =  _T("SW:  ")+csTemp;
 		csText  = csText.Left(csText.GetLength() -4);
 	}
@@ -571,7 +575,7 @@ int  COutputList::FomatAPDU(CString csText,CStringArray& csArray,int iNT)
 
 	return iCount;
 }
-int COutputList::FomatDesription(CString csName, CString csText,CStringArray& csArray)
+int  COutputList::FomatDesription(CString csName, CString csText,CStringArray& csArray)
 {
 	int iNum= 0;
 	int iOff = 0;
@@ -652,12 +656,19 @@ void COutputList::RemvoeAllSelect()
 UINT COutputList::ItemFromPoint(CPoint pt, BOOL& bOutside)
 {
 	UINT iItem = CListBox::ItemFromPoint(pt,bOutside);
+
+	//取出范围内,最上端的值
 	UINT iTop  = GetTopIndex();
-	iTop       = iTop/0xFFFF;
 
+	//获取的ITEM范围为0 - 0xFFFF
+	//如果iTop低位小于Item,说明已经进位了
+	if ((iTop&0xFFFF) > iItem)
+		iItem += 0x10000;
 
+	//再次加上高位
+	iItem += (iTop&0xFFFF0000);
 
-	return iTop*0xFFFF + iItem;
+	return iItem;
 }
 void COutputList::OnLButtonDown(UINT nFlags, CPoint point)
 {
@@ -1166,7 +1177,7 @@ void CGetFlashWnd::DisplayFlashData(CString csInput)
 
 
 	
-		m_wndGetFlash.SetCaretIndex(m_wndGetFlash.GetCount());
+		m_wndGetFlash.SetCaretIndex(m_wndGetFlash.GetCount()-1);
 		
 		uiOffset = iOffset;
 	} while (iOffset<(iLength-16));
@@ -1233,7 +1244,7 @@ void CGetFlashWnd::__DisplayFlashData(CString csAPDU)
 
 
 	
-	m_wndGetFlash.SetCaretIndex(m_wndGetFlash.GetCount());
+	m_wndGetFlash.SetCaretIndex(m_wndGetFlash.GetCount()-1);
 
 
 

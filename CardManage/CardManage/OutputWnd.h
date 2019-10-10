@@ -14,6 +14,8 @@
 //#include "..\AllUsedSource\ListBoxXI.h"
 #include "ListBoxXI.h"
 
+#define _USE_LISTBOXXI 
+
 /////////////////////////////////////////////////////////////////////////////
 // COutputList ´°¿Ú
 #define  _DEF_APDU_ATR     1
@@ -30,7 +32,11 @@
 
 #define  DEF_OUTPUTLIST_HOTKEY_C_C 10100
 
+#ifdef _USE_LISTBOXXI
 class COutputList : public CListBoxXI
+#else
+class COutputList : public CListBox
+#endif
 {
 // ¹¹Ôì
 public:

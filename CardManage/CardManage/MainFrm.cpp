@@ -1345,180 +1345,7 @@ int CMainFrame::_TestCasePostLastCommand(CString csSW,CString& csResp,bool bUICC
 
 void CMainFrame::_TestCaseExpCommand(CString csSend,CString csResp)
 {
-
-	//int iSendLen;
-	//int iIns,iSW;
-	//CString csResult;
-	//CString csSp;
-
-	//
-	//_DeleteEnterSpace(csSend);
-
-	//iSendLen = csSend.GetLength();
-
-	//iIns     = _CString2Int(csSend.Mid(2,2));
-
-
-
-	//switch(iIns)
-	//{
-	//case 0x04:
-	//	csResult = _T("Deactive 文件");
-	//	break;
-	//case 0x44:
-	//	csResult = _T("Active 文件");
-	//	break;
-
-	//case 0x17:
-	//	csResult = _T("Verify PS");
-	//	break;
-	//case 0x20:
-	//	csResult = _T("Verify PIN");
-	//	break;
-	//case 0x24:
-	//	csResult = _T("Change PIN");
-	//	break;
-	//case 0x26:
-	//	csResult = _T("Disable PIN");
-	//	break;
-	//case 0x28:
-	//	csResult = _T("Enable PIN");
-	//	break;
-	//case 0x2C:
-	//	csResult = _T("Unblock PIN");
-	//	break;
-	//case 0xA2:
-	//	csResult = _T("Search 文件");
-	//	break;
-	//case 0xA4:
-
-	//	csSp = csSend.Mid(10,iSendLen-10);
-	//	if (csSp.GetLength()== 4)
-	//	{
-	//		//if ((CString2Int(csSp)&0x0F00)!=(0x0F00))
-	//		//	return ;
-	//	}
-
-	//	csResult = _T("选择 文件") + csSp;
-
-
-
-	//	break;
-	//case 0xB0:
-	//	csResult = _T("读取 Binary 文件");
-
-	//	break;
-	//case 0xB2:
-	//	csResult = _T("读取 Record 文件");
-
-	//	break;
-	//case 0xD6:
-
-	//	csResult = _T("更新 Binary 文件");
-
-	//	break;
-	//case 0xDC:
-	//	csResult = _T("更新 Record 文件");
-
-	//	break;
-	//case 0xE4:
-
-	//	csResult = _T("删除 文件") + csSend.Mid(10,iSendLen-10);
-	//	break;
-
-	//default:
-	//	csResult.Empty();
-	//	break;
-
-	//}
-
-	//if (!csResult.IsEmpty())
-	//{
-
-	//	if(csResp.GetLength() < 4)
-	//		csResult += _T("   失去响应");
-	//	else
-	//	{
-
-	//		iSW      = _CString2Int(csResp.Right(04));
-
-	//		switch(iSW/0x100)
-	//		{
-	//		case 0x6F:csResult += _T("   内部问题");        break;
-	//		case 0x6D:csResult += _T("   不能识别指令");    break;
-	//		case 0x6C:csResult += _T("   P3错误");          break;
-	//		case 0x6B:csResult += _T("   P1P2错误");        break;
-	//		case 0x67:csResult += _T("   P3错误");          break;
-	//		case 0x6E:csResult += _T("   Class错误");       break;
-	//		case 0x63:csResult += (_T("   PIN剩余次数")+csResp.Right(1));         break;
-	//		case 0x62:	
-	//			switch(iSW&0xFF)
-	//			{
-	//			case 0x83 :csResult += _T("   文件无效");          break;
-	//			case 0x82 :csResult += _T("   没有找记录");        break;
-	//			default:csResult += _T("   失败");                 break;
-	//			}
-	//			break;
-	//		case 0x68:
-	//			switch(iSW&0xFF)
-	//			{
-	//			case 0x81 :csResult += _T("   不支持逻辑通道");          break;
-	//			case 0x82 :csResult += _T("   安全状态不满足");        break;
-	//			default:csResult += _T("   失败");                 break;
-	//			}		
-	//			break;
-	//		case 0x69:
-	//			switch(iSW&0xFF)
-	//			{
-	//			case 0x81 :csResult += _T("   命令与文件结构矛盾");          break;
-	//			case 0x82 :csResult += _T("   安全状态不满足");        break;
-	//			case 0x83 :csResult += _T("   鉴权/PIN被锁死");        break;
-	//			case 0x84 :csResult += _T("   引用的数据无效");        break;
-	//			case 0x85 :csResult += _T("   使用的条件不满足");        break;
-	//			case 0x86 :csResult += _T("   没有选择的EF");        break;
-	//			default:csResult += _T("   失败");                 break;
-	//			}		
-	//			break;
-	//		case 0x6A:
-	//			switch(iSW&0xFF)
-	//			{
-	//			case 0x80 :csResult += _T("   数据字段中的参数错误");          break;
-	//			case 0x81 :csResult += _T("   功能不被支持");          break;
-	//			case 0x82 :csResult += _T("   找不到文件");        break;
-	//			case 0x83 :csResult += _T("   找不到记录");        break;
-	//			case 0x86 :csResult += _T("   错误的参数P1-P2");        break;
-	//			case 0x87 :csResult += _T("   Lc与P1-P2不一致");        break;
-	//			default:csResult += _T("   失败");                 break;
-	//			}	
-	//			break;
-	//		case 0x98:
-	//			switch(iSW&0xFF)
-	//			{
-	//			case 0x40 :csResult += _T("   鉴权/PIN被锁死");          break;
-	//			case 0x04 :csResult += _T("   鉴权/PIN错误");          break;
-	//			case 0x50 :csResult += _T("   INCREASE不能被执行，已达到最大值");        break;
-	//			case 0x62 :csResult += _T("   鉴权错误,输入数据有误");        break;
-	//			default:csResult += _T("   失败");                 break;
-	//			}	
-	//			break;
-	//		case 0x91:csResult += _T("   成功,后续有主动式指令"); break;
-
-	//		default:
-	//			if ((iSW == 0x9000)||((iSW&0xFF00) == 0x6100)||((iSW&0xFF00) == 0x9F00))
-	//				csResult += _T("   成功");
-	//			else
-	//				csResult += _T("   失败");
-	//		}
-
-	//	}
-
-
-	//}
-	//m_wndOutput.Print2Output(csResult,csSend,csResp);
-
 	m_wndOutput.PrintAPDU(csSend,csResp);
-
-//	m_wndOutput.PrintTime2Output(lWorkTime);
 }
 
 int CMainFrame::_TestCaseFileIsExisted(CString csFID,bool bAID)
@@ -1940,6 +1767,7 @@ CString CMainFrame::_TestCaseReadCurrentFileData(CString csFCI,bool bUICC)
 	CString csResult;
 
 	if (iThread != Def_Thread_Free)
+		
 		return csResult;
 
 	if (bGetARR)
@@ -4145,7 +3973,11 @@ BOOL CMainFrame ::SaveData22Ram(CString csFCI,int iLevel)
 	CString csDatas;
 	csFormat = RepeatCString(_T("  "),iLevel);
 
-	csDatas += _TestCaseReadCurrentFileData(csFCI,bIsUICC);
+
+	if (bIsUICC)
+		csDatas += _TestCaseReadCurrentFileData_UICC(csFCI);
+	else
+		csDatas += _TestCaseReadCurrentFileData_GSM(csFCI);
 
 	csCard += csFormat+  _T("<Datas>") + csDatas + _T("</Datas>\n\r"); 
 	return TRUE;
