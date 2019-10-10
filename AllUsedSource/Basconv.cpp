@@ -1234,3 +1234,46 @@ ULONG32 Byte2uLong(BYTE*Byte,UINT uiByteLen)
 
 	return ulData;
 }
+
+
+
+
+int CharToUnicode(char *pchIn, CString *pstrOut)
+{
+  int nLen;
+  WCHAR *ptch;
+
+
+  if(pchIn == NULL)
+  {
+	return 0;
+  }
+
+
+  nLen = MultiByteToWideChar(CP_ACP, 0, pchIn, -1, NULL, 0);//取得所需缓存的多少
+  ptch = new WCHAR[nLen];//申请缓存空间
+  MultiByteToWideChar(CP_ACP, 0, pchIn, -1, ptch, nLen);//转码
+  pstrOut->Format(_T("%s"), ptch);
+  delete [] ptch;
+
+
+  return nLen;
+}
+BOOL ReadStringToUnicode(CString &str)
+{
+
+
+  char *szBuf = new char[ str.GetLength()+1]; //数量要加1
+
+
+  for (int i = 0 ; i < str.GetLength(); i++)
+  {
+	szBuf[i] = (CHAR)str.GetAt(i);
+  }  
+  szBuf[str.GetLength()]='\0';   //这里，必须要加上，否则会在结尾片显示一个"铪"字。
+  // USES_CONVERSION;
+  //char * sz=W2A(str.GetBuffer());  //这些方法我都试过，不行的。
+  BOOL bok= CharToUnicode(szBuf , &str);
+  delete []szBuf;
+  return bok;
+}

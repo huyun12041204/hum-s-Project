@@ -152,7 +152,9 @@ int CPcscReader::SendCommand(LPCBYTE lpSend,int iSendLength, unsigned char* ucRe
 }
 
 
-int CPcscReader::SendCommand(unsigned char* ucpSend,int iSendLength, unsigned char* ucResponse,int* iResLen)
+
+
+int CPcscReader::SendCommand(unsigned char* ucpSend,int iSendLength, unsigned char* ucResp,int* iResLen)
 {
 
 
@@ -162,9 +164,12 @@ int CPcscReader::SendCommand(unsigned char* ucpSend,int iSendLength, unsigned ch
 
 	iResponseLen = SendCommand(ucSend,iSendLength,ucResponse);
 
-	*iResLen = iResponseLen;
+	
 
 	PostParameter();
+
+	memcpy(ucResp,ucResponse,iResponseLen);
+	*iResLen = iResponseLen;
 	return iResponseLen;
 
 }
@@ -177,6 +182,21 @@ void CPcscReader::InitParameter(void)
 	
 }
 
+int CPcscReader::GetResponse_Post(int iReslen)
+{
+	BYTE ucTempCla;
+	ucTempCla = ucSend[Cla];
+	InitParameter();
+	ucSend[Cla] = ucTempCla;
+	ucSend[Ins] = 0xC0;
+	ucSend[P1 ] = 0x00;
+	ucSend[P2 ] = 0x00;
+	ucSend[P3 ] = iReslen%0x100;
+	iResponseLen= SendCommand (ucSend,05,ucResponse);
+	PostParameter();
+	return iResponseLen;
+
+}
 void CPcscReader::PostParameter(void)
 {
 	ucSW[0] = ucResponse[iResponseLen-2];
@@ -186,11 +206,14 @@ void CPcscReader::PostParameter(void)
 	{	if (ucSW[0] == 0x9f)
 			iResponseLen = GetResponse_GSM(ucSW[1]);
 	    if (ucSW[0] == 0x61)
-		    iResponseLen = GetResponse_UICC(ucSW[1]);
+		    iResponseLen = GetResponse_Post(ucSW[1]);
 
 
 	}
 }
+
+
+
 
 
 bool CPcscReader::SetAutoGetResponse(int iAuto)

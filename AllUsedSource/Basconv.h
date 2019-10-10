@@ -260,4 +260,17 @@ CString TransationUEMode(CString csData);
   _variant_t Int2_variant_t(int iType,int iInput);
   UINT uLong2Byte(ULONG32 ulData,BYTE*Byte,UINT uiByteLen = 4);
 
-#endif
+
+
+  //************************************
+  // Method:    ReadStringToUnicode
+  // FullName:  ReadStringToUnicode
+  // Access:    public 
+  // Returns:   BOOL
+  // Qualifier:
+  // Parameter: CString & str
+  //************************************
+  BOOL ReadStringToUnicode(CString &str);
+
+
+  #endif

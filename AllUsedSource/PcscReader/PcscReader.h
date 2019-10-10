@@ -62,7 +62,7 @@ public:
 public:
 
 
-	int SendCommand(unsigned char* ucpSend,int iSendLength, unsigned char* ucResponse,int* iResLen);
+	int SendCommand(unsigned char* ucpSend,int iSendLength, unsigned char* ucResp,int* iResLen);
 	bool SetAutoGetResponse(int iAuto);
 	int GetLastResponse(unsigned char * ucRec);
 	int GetLastSW(unsigned char * ucLSW);
@@ -70,6 +70,7 @@ public:
 
 protected:
 	void InitParameter(void);
+	int GetResponse_Post(int iReslen);
 	void PostParameter(void);
 	int SendCommand(LPCBYTE lpSend,int iSendLength, unsigned char* ucResponse);
 
