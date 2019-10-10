@@ -62,7 +62,7 @@ public:
 	void UpdateFonts();
 //	virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = NULL);
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	int PrintEdit(char* bInput, UINT uiLen);
+	int PrintEdit(BYTE* bInput, UINT uiLen);
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	int ViewAPDU(BYTE* ucBits , UINT BitsLen);
 };

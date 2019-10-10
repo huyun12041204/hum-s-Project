@@ -46,6 +46,7 @@ public:
 	virtual void SaveCustomState();
 
 	int InstallFont(void);
+	//afx_msg void OnUpdateProgress();
 	afx_msg void OnAppAbout();
 	DECLARE_MESSAGE_MAP()
 };

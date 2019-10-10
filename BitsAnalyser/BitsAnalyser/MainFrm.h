@@ -30,12 +30,15 @@
 #define MY_INTF 0
 
 // Device endpoint(s)
-#define EP_IN 0x81
-#define EP_OUT 0x01
-#define BUF_SIZE 512
+#define EP_IN    0x81
+#define EP_OUT   0x01
+#define BUF_SIZE 256
 #define Max_Size 1024*1024*100
 
+#define Command_Head_Length 5
+#define Command_TimeOut     5000
 
+#define _Command_Mode 1
 
 #endif
 
@@ -71,12 +74,16 @@ protected:  // 控件条嵌入成员
 	CMFCRibbonApplicationButton m_MainButton;
 	CMFCToolBarImages m_PanelImages;
 	CMFCRibbonStatusBar  m_wndStatusBar;
-	COutputWnd        m_wndOutput;
+
+
+	COutputWnd           m_wndOutput;
 
 
 	CWinThread * GetBitThread;
 	CWinThread * ViewBitThread;
-
+public:
+	CMFCRibbonProgressBar*   m_Progress;
+	CMFCRibbonBaseElement*   m_ProgressData; 
 // 生成的消息映射函数
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -87,8 +94,10 @@ protected:
 	afx_msg void OnConnectButton();
 	afx_msg void OnDisconnectButton();
 	afx_msg void OnUpdateConnected(CCmdUI* pCmdUI);
+	afx_msg LRESULT OnUpdateProgress(WPARAM /* wParam*/,LPARAM /* LParam*/);
 	DECLARE_MESSAGE_MAP()
 
+	
 	BOOL CreateDockingWindows();
 	void SetDockingWindowIcons(BOOL bHiColorIcons);
 public:

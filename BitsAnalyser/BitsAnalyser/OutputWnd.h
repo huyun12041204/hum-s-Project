@@ -64,6 +64,7 @@ public:
 	int  FomatAPDU(CString csText,CStringArray& csArray,int iNT);
 	int  FomatDesription(CString csText,CStringArray& csArray);
 	void RemvoeAllSelect();
+	UINT ItemFromPoint(CPoint pt, BOOL& bOutside);
 	//	afx_msg void OnLbnSelchange();
 
 	int PreSelect(int iIndex, BOOL bSel);

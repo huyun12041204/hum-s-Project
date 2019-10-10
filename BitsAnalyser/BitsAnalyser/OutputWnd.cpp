@@ -461,6 +461,17 @@ void COutputList::RemvoeAllSelect()
 	}
 
 }
+
+UINT COutputList::ItemFromPoint(CPoint pt, BOOL& bOutside)
+{
+	UINT iItem = CListBox::ItemFromPoint(pt,bOutside);
+	UINT iTop  = GetTopIndex();
+	iTop       = iTop/0x10000;
+
+
+
+	return iTop*0x10000 + iItem;
+}
 void COutputList::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
@@ -471,7 +482,7 @@ void COutputList::OnLButtonDown(UINT nFlags, CPoint point)
 
 	BOOL bOut;
 	int iSelItem;
-	iSelItem = CListBox::ItemFromPoint(point,bOut);
+	iSelItem = ItemFromPoint(point,bOut);
 	if (bOut)
 	{
 		RemvoeAllSelect();

@@ -33,6 +33,7 @@ BEGIN_MESSAGE_MAP(CBitsAnalyserApp, CWinAppEx)
 	// 基于文件的标准文档命令
 	ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
+	//ON_MESSAGE(0x1000,OnUpdateProgress)
 END_MESSAGE_MAP()
 
 
@@ -247,3 +248,10 @@ int CBitsAnalyserApp::InstallFont(void)
 	return 0;
 }
 
+
+//void CBitsAnalyserApp::OnUpdateProgress()
+//{
+//	//UINT iPos = uiPrinLen*100/uiRecvLen;
+//	//m_Progress.SetPos(iPos);
+//
+//}

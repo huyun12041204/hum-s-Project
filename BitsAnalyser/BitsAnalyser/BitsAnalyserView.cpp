@@ -660,7 +660,7 @@ int CBitsAnalyserView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 }
 
 
-int CBitsAnalyserView::PrintEdit(char* bInput, UINT uiLen)
+int CBitsAnalyserView::PrintEdit(BYTE* bInput, UINT uiLen)
 {
 
 	CString csPrint;
@@ -733,14 +733,14 @@ int CBitsAnalyserView::ViewAPDU(BYTE* ucBits , UINT BitsLen)
 
 					case _TPDU_TPDU:
 
-						if (P3IsLE(bBYTES))
-								_ExplainAPDU(csSend,csData + csSW,csInfomation);
-						else
-							_ExplainAPDU(csSend + csData,csSW,csInfomation);
+						//if (P3IsLE(bBYTES))
+						//		_ExplainAPDU(csSend,csData + csSW,csInfomation);
+						//else
+						//	_ExplainAPDU(csSend + csData,csSW,csInfomation);
 						
 
-						for (int i = 0 ; i < csInfomation.GetCount(); i++)
-							m_APDUList.FomatAddString(csInfomation.GetAt(i));
+						//for (int i = 0 ; i < csInfomation.GetCount(); i++)
+						//	m_APDUList.FomatAddString(csInfomation.GetAt(i));
 
 						m_APDUList.FomatAddString(csSend,_DEF_APDU_HEAD);
 						m_APDUList.FomatAddString(csPro ,_DEF_APDU_NULL);
@@ -758,10 +758,13 @@ int CBitsAnalyserView::ViewAPDU(BYTE* ucBits , UINT BitsLen)
 
 					}
 
-					
+				   
 
+					//int index = m_APDUList.GetCurSel();
 
-					m_APDUList.SetCaretIndex(m_APDUList.GetCount());
+					//KillForc
+				//	m_APDUList.SetSel(index,FALSE);
+					m_APDUList.SetCaretIndex(m_APDUList.GetCount()-1);
 					//CString csTPDU;
 					//_UcHex2CString(bBYTES,iLen,csTPDU);
 					//m_APDUList.AddString(csTPDU);
@@ -777,14 +780,22 @@ int CBitsAnalyserView::ViewAPDU(BYTE* ucBits , UINT BitsLen)
 					//}
 				}
 
+				if (iRet < 0)
+				{
+					CString csErr;
+					csErr.Format("Error code : %x",iRet);
+					AfxMessageBox(csErr);
+				}
+
+
 			}
 
 
 			//´Ë´¦ÎªReset
 			if ((bbits[0]&0x30) != 0x30) 
 			{
-				iPrescale = 372;
-				iBitStatue = Def_Bit_S;
+				iPrescale   = 372;
+				iBitStatue  = Def_Bit_S;
 				iTPDUStatue = _TPDU_NULL;
 				iByteLen = 0;
 			}
