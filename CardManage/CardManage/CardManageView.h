@@ -88,11 +88,18 @@ public:
 	CMFCPropertyGridCtrl m_wndPropData;
 	CMFCPropertyGridCtrl m_wndPropExplain;
 
+	//当前选中文件 FID 和 iDF
+	//此处为了可以适时解析
+	int __iFID;
+	int __iMARK;
+
+
 	CString csPBR;
 	int iPBRLen;
 
 	CString csMCCFilePath;
 	CString csMNCFilePath;
+
 
 // 重写
 public:
@@ -122,6 +129,8 @@ public:
 	void _SetFCI2PropList(CString csFCI);
 	void SetFile2PropList(CString csData);
 
+	void SetFileRecord2ProList(int iNumber,CString csRecord);
+	void ExplainFileRecord2ProList(int iNumber,CString csRecord);
 	void SetExpandedFormatSecurity2PropList(CString csData,bool bDF);
 	//CString GetACFromARR(int iCommand,CString csARR,int* Other);
 	//CString TransationSecurityConditionData(int iSTTag,CString csSTData);
@@ -156,6 +165,7 @@ public:
 
 	void InitPropExpain(void);
 	void ExplainFile(int iFID,int iMark);
+	void ExplainFileRecord(int iNumber, CString csRecord);
 	bool ExplainFID(int iFID, int iMark);
 	bool ExplainGSM(int iFID);
 	bool ExplainUSIM(int iFID);
@@ -173,7 +183,8 @@ public:
 	CString GetData4PropList(int iNumber);
 
 
-	CMFCPropertyGridProperty* Explain_PBRData(CString csData,int iNumber);
+	void ResetPBR();
+	CMFCPropertyGridProperty* Explain_PBRData(CString csData, int iNumber);
 
 	int ExplainPhonebookFile(int iFID);
 

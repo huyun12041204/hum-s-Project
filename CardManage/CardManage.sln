@@ -1,8 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
-MinimumVisualStudioVersion = 10.0.40219.1
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CardManage", "CardManage\CardManage.vcxproj", "{8456D25B-9BBE-4094-B1E1-BE5BB63E35BA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D4709809-AE55-4C2B-8EBE-AF8975CA5457} = {D4709809-AE55-4C2B-8EBE-AF8975CA5457}
@@ -22,13 +20,13 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CCR5", "..\AllUsedSource\CCR5\CCR5.vcxproj", "{7FA6276E-4DEA-4017-9CF6-DF25DE145736}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParameterConvert", "..\AllUsedSource\ParameterConvert\ParameterConvert\ParameterConvert.vcxproj", "{CD4B75B8-1DF1-48A6-BE27-7477E9949828}"
-	ProjectSection(ProjectDependencies) = postProject
-		{075DFEF4-3B38-4B88-B022-838047E4E0C5} = {075DFEF4-3B38-4B88-B022-838047E4E0C5}
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicConvert", "..\AllUsedSource\BasicConvert\BasicConvert\BasicConvert.vcxproj", "{075DFEF4-3B38-4B88-B022-838047E4E0C5}"
 EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CardManage.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
@@ -61,11 +59,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DF399C1B-0523-4780-9CC8-04D0B9EA836D}
-	EndGlobalSection
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = CardManage.vsmdi
 	EndGlobalSection
 EndGlobal

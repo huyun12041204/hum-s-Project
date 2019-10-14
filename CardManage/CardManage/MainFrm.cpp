@@ -127,6 +127,17 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_COMMAND(ID_Reference_Check, &CMainFrame::OnReferenceCheck)
 	ON_COMMAND(ID_Explain_Button, &CMainFrame::OnExplainButton)
 	ON_COMMAND(ID_ReConvert_button, &CMainFrame::OnReconvertbutton)
+
+
+	ON_MESSAGE(ID_Update_Progress_Event , &CMainFrame::OnUpdateProgress)
+	ON_MESSAGE(ID_Update_View_Event , &CMainFrame::OnUpdateView)
+	ON_MESSAGE(ID_Get_AC_Event      , &CMainFrame::OnGetProplistAC)
+	ON_MESSAGE(ID_Update_Record_View_Event      , &CMainFrame::OnUpdateRecordView)
+	ON_MESSAGE(ID_Update_Dialog_Event       , &CMainFrame::OnUpdateDataDialog)
+	
+	
+
+	
 END_MESSAGE_MAP()
 
 // CMainFrame 构造/析构
@@ -146,7 +157,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	if (CFrameWndEx::OnCreate(lpCreateStruct) == -1)
 		return -1;
 
-	BOOL bNameValid;
+//	BOOL bNameValid;
 
 
 
@@ -164,34 +175,65 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		return -1;      // 未能创建
 	}
 
-	CString strTitlePane1;
-	CString strTitlePane2;
-	CString strTitlePane3;
-	CString strTitlePane4;
-	bNameValid = strTitlePane1.LoadString(IDS_STATUS_PANE1);
-	ASSERT(bNameValid);
-	m_wndStatusBar.AddExtendedElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE1, strTitlePane1, TRUE), strTitlePane1);
-	bNameValid = strTitlePane2.LoadString(IDS_STATUS_PANE2);
-	ASSERT(bNameValid);
-	m_wndStatusBar.AddExtendedElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE2, strTitlePane2, TRUE), strTitlePane2);
+	//CString strTitlePane1;
+	//CString strTitlePane2;
+	//CString strTitlePane3;
+	//CString strTitlePane4;
+	//bNameValid = strTitlePane1.LoadString(IDS_STATUS_PANE1);
+	//ASSERT(bNameValid);
+	//m_wndStatusBar.AddExtendedElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE1, strTitlePane1, TRUE), strTitlePane1);
+	//bNameValid = strTitlePane2.LoadString(IDS_STATUS_PANE2);
+	//ASSERT(bNameValid);
+	//m_wndStatusBar.AddExtendedElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE2, strTitlePane2, TRUE), strTitlePane2);
 
-	bNameValid = strTitlePane3.LoadString(IDS_STATUS_PANE3);
-	ASSERT(bNameValid);
-	m_wndStatusBar.AddElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE3, strTitlePane3, TRUE), strTitlePane3);
+	//bNameValid = strTitlePane3.LoadString(IDS_STATUS_PANE3);
+	//ASSERT(bNameValid);
+	//m_wndStatusBar.AddElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE3, strTitlePane3, TRUE), strTitlePane3);
 
 
-	//m_wndStatusBar.AddDynamicElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE3, strTitlePane3, TRUE));
+	////m_wndStatusBar.AddDynamicElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE3, strTitlePane3, TRUE));
 
-	bNameValid = strTitlePane4.LoadString(IDS_STATUS_PANE4);
-	ASSERT(bNameValid);
-	m_wndStatusBar.AddElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE4, strTitlePane4, TRUE), strTitlePane4);
+	//bNameValid = strTitlePane4.LoadString(IDS_STATUS_PANE4);
+	//ASSERT(bNameValid);
+	//m_wndStatusBar.AddElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE4, strTitlePane4, TRUE), strTitlePane4);
 		//m_wndStatusBar.AddDynamicElement(new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE4, strTitlePane4, TRUE));
 
+	CString csTitle;
+	CString csInitValue;
 
-	m_ElementATR = m_wndStatusBar.GetExElement(1);
-	m_ElementSta = m_wndStatusBar.GetExElement(0);
-	m_ElementThr = m_wndStatusBar.GetElement(0);
-	m_ElementPro = m_wndStatusBar.GetElement(1);
+	csTitle.LoadString(IDS_STATUS_PANE1);
+	csInitValue  = csTitle + _T("          \1");
+	m_ElementSta = new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE1, csInitValue);
+	m_wndStatusBar.AddElement(m_ElementSta,csTitle);
+
+	csTitle.LoadString(IDS_STATUS_PANE2);
+	csInitValue  = _T("ATR:                                                      \1");
+	m_ElementATR = new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE2, csInitValue);
+	m_wndStatusBar.AddElement(m_ElementATR,csTitle);
+
+
+	csTitle.LoadString(IDS_STATUS_PANE3);
+	csInitValue  = csTitle + _T("          \1");
+	m_ElementThr = new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE3, csInitValue);
+	m_wndStatusBar.AddExtendedElement(m_ElementThr,csTitle);
+
+	csTitle.LoadString(IDS_STATUS_PANE4);
+	csInitValue  = _T("0/0          \1");
+	m_ElementPro = new CMFCRibbonStatusBarPane(ID_STATUSBAR_PANE4, csInitValue);
+	m_wndStatusBar.AddExtendedElement(m_ElementPro,csTitle);
+
+	//m_ElementATR = m_wndStatusBar.GetExElement(1);
+	//m_ElementSta = m_wndStatusBar.GetExElement(0);
+	//m_ElementThr = m_wndStatusBar.GetElement(0);
+	//m_ElementPro = m_wndStatusBar.GetElement(1);
+
+	m_ElementProgress = new CMFCRibbonProgressBar(ID_STATUSBAR_PANE5,300,22);
+	m_ElementProgress->SetRange(0,1000);
+	m_ElementProgress->SetPos(0);
+	m_wndStatusBar.AddExtendedElement(m_ElementProgress,_T("进度条"));
+
+
+
 
 	m_wndStatusBar.RedrawWindow();
 
@@ -1013,6 +1055,82 @@ void CMainFrame::OnSmsButton()
 	m_dlgChangeFile.SetCurrentFileInformation(NULL,NULL);
 
  }
+
+ LRESULT CMainFrame::OnUpdateProgress(WPARAM  wParam,LPARAM  LParam)
+ {
+
+	 m_ElementProgress->SetRange(0,(int)wParam);
+	 m_ElementProgress->SetPos  ((int)LParam);
+
+	 CString csText;
+
+	 csText.Format("%d/%d",(int)LParam,(int)wParam);
+
+	 m_ElementPro->SetText(csText);
+	 //// UINT iPos = uiPrinLen*100/uiRecvLen;
+	 //CString csText;
+	 //if (uiBitsLen!= 0)
+	 //{
+	 //	UINT iPos = uiRecvLen*300/uiBitsLen;
+	 //	m_Progress->SetPos(iPos);
+
+
+	 //}
+
+	 //csText.Format("%d/%d",uiRecvLen,uiBitsLen);
+	 //m_ProgressData->SetText(csText);
+
+	 //m_wndStatusBar.RedrawWindow();
+	 return 1;
+ }
+
+ LRESULT CMainFrame::OnUpdateView(WPARAM  wParam,LPARAM  LParam)
+ {
+	 CString* csFileData; 
+
+	 csFileData = (CString *) wParam;
+
+	 m_wndProperties->SetFile2PropList(*csFileData);
+	 
+	 return TRUE;
+ }
+
+ LRESULT CMainFrame::OnGetProplistAC(WPARAM  wParam,LPARAM  LParam)
+ {
+	 return  m_wndProperties->GetAC((int)LParam);
+ }
+
+ LRESULT CMainFrame::OnUpdateRecordView(WPARAM  wParam,LPARAM  LParam)
+ {
+	 CString* csFileData; 
+
+	 csFileData = (CString *) LParam;
+
+	 m_wndProperties->SetFileRecord2ProList((int) wParam,*csFileData);
+
+	 m_wndProperties->ExplainFile(0x00,0x00);
+	 return TRUE;
+ }
+
+ LRESULT CMainFrame::OnUpdateDataDialog(WPARAM  wParam,LPARAM  LParam)
+ {
+	 CString* csFileData = (CString*)LParam;
+
+	 switch((int)wParam)
+	 {
+	 case IDD_ChangeFile_Dialog:
+		 if (bIsUICC)
+			 m_dlgChangeFile.SetFileData(csMutlFCI,*csFileData);
+		 else
+			 m_dlgChangeFile._SetFileData(csMutlFCI,*csFileData);
+		 break;
+	 default:return 0;
+
+	 }
+
+	 return 1;
+ }
+
  void CMainFrame::OnGetPinCounterButton()
  {
 	 GetPinStatus();
@@ -1236,6 +1354,7 @@ bool CMainFrame::Initialize_PcscList(void)
 		pFontComboBox->AddItem(szReaderName[i]);
 
 	pFontComboBox->SelectItem(0);
+	//pFontComboBox->
 
 	return true;
 }
@@ -1247,7 +1366,7 @@ void CMainFrame::InitParamater(void)
 
 	csCardATR.Empty();
 	csAppList.Empty();
-
+	csMutlFCI.Empty();
 
 	iReaderType   = Def_ReaderType_PCSC;
 	iReaderStatus = Def_Terminal_Disconnected;
@@ -1766,13 +1885,23 @@ CString CMainFrame::_TestCaseReadCurrentFileData(CString csFCI,bool bUICC)
 {
 	CString csResult;
 
-	if (iThread != Def_Thread_Free)
-		
+
+	//switch(iThread)
+	//{
+	//case Def_Thread_Free:
+
+	//default:return csResult;
+	//}
+
+
+	if ((iThread != Def_Thread_Free)&&
+		(iThread!= Def_Thread_ReadFile))
 		return csResult;
 
 	if (bGetARR)
 	{
-		if (!_TestCaseVerify(m_wndProperties->GetAC(1)))
+		//if (!_TestCaseVerify(m_wndProperties->GetAC(1)))
+		if (!_TestCaseVerify(SendMessage(ID_Get_AC_Event,NULL,1)))
 			if (!_TestCaseVerifyPS())			
 				return false;
 	}
@@ -1813,12 +1942,21 @@ else
 	for (int iNum = 1 ; iNum <= iRecNum;iNum++)
 	{
 
+		//如果只是读取单个文件的进程,此时需要输出进度
+		//否则应该为总的进度
+		if (iThread == Def_Thread_ReadFile)
+			SendMessage(ID_Update_Progress_Event,iRecNum,iNum);
 		csTemp.Format("%02X",iNum);
-
 		csTemp = _TestCaseSendCommand(_T("A0B2")+csTemp+_T("04")+csRecLen);
 
 		if (csTemp.Right(04) = _T("9000"))
-			csResult += csTemp.Mid(00,csTemp.GetLength()-4);
+	
+		{
+			csTemp    =  csTemp.Mid(00,csTemp.GetLength()-4);
+			csResult += csTemp;
+			if (iThread == Def_Thread_ReadFile)
+				SendMessage(ID_Update_Record_View_Event,iNum,(LPARAM)&csTemp);
+		}
 		else
 			return csResult;
 	}
@@ -1834,7 +1972,7 @@ CString CMainFrame::_TestCaseReadCurrentFileData_UICC(CString csFCI)
 	CString csResult;
 	CString csFileInformation,csFileType,csSize,csRescord,csNumber;
 	CString csTemp;
-	int iType;
+	int iType,iSum;
 
 
 	csFCI               = GetTLVData(csFCI,0x62);
@@ -1852,16 +1990,25 @@ CString CMainFrame::_TestCaseReadCurrentFileData_UICC(CString csFCI)
 	{
 		csNumber  = csFileInformation.Mid(0x8 ,02);
 		csRescord = csFileInformation.Mid(04 ,04);
-
-		for (int iNum = 1 ; iNum <= _CString2Int(csNumber);iNum++)
+		iSum      = _CString2Int(csNumber);
+		for (int iNum = 1 ; iNum <= iSum;iNum++)
 		{
+			//如果只是读取单个文件的进程,此时需要输出进度
+			//否则应该为总的进度
+			if (iThread == Def_Thread_ReadFile)
+				SendMessage(ID_Update_Progress_Event,iSum,iNum);
 
 			csTemp.Format("%02X",iNum);
 
 			csTemp = _TestCaseSendCommand(_T("00B2")+csTemp+_T("04")+csRescord.Mid(02,02));
 
 			if (csTemp.Right(04).Compare (_T("9000")) == 0)
-				csResult += csTemp.Mid(00,csTemp.GetLength()-4);
+			{
+				csTemp    =  csTemp.Mid(00,csTemp.GetLength()-4);
+				csResult += csTemp;
+				if (iThread == Def_Thread_ReadFile)
+					SendMessage(ID_Update_Record_View_Event,iNum,(LPARAM)&csTemp);
+			}
 			else
 				return csResult;
 		}
@@ -1910,7 +2057,7 @@ CString CMainFrame::_TestCaseSelectCurrentFile(HTREEITEM hCurrentItem)
 }
 CString CMainFrame::_TestCaseGetBinaryData(int iSize,bool bUICC)
 {
-	int iOffset;
+	int iOffset,iP3;
 	CString csSend,csResp;
 	CString csResult;
 
@@ -1920,18 +2067,23 @@ CString CMainFrame::_TestCaseGetBinaryData(int iSize,bool bUICC)
 	while(iSize>iOffset)
 	{
 		if (iSize -iOffset >= 0xFF)
-			csSend.Format("%04X%02X",iOffset,0xFF);
+			iP3 = 0xFF;	
 		else
-			csSend.Format("%04X%02X",iOffset,iSize -iOffset);
+			iP3 = iSize - iOffset;
+
+		csSend.Format("%04X%02X",iOffset,iP3);
 
 		if (bUICC)
 			csResp = _TestCaseSendCommand(_T("00B0")+csSend);
 		else
 			csResp = _TestCaseSendCommand(_T("A0B0")+csSend);
 
+		iOffset  += iP3;
 
-
-		iOffset  += 0xFF;
+		//如果只是读取单个文件的进程,此时需要输出进度
+		//否则应该为总的进度
+		if (iThread == Def_Thread_ReadFile)
+			SendMessage(ID_Update_Progress_Event,iSize,iOffset);
 
 		if (csResp.Right(04) == _T("9000"))
 			csResult += csResp.Left(csResp.GetLength()-4);
@@ -1942,7 +2094,13 @@ CString CMainFrame::_TestCaseGetBinaryData(int iSize,bool bUICC)
 		}
 	}
 
-	return csResult.Mid(0,iSize*2);
+
+	csResult = csResult.Mid(0,iSize*2);
+	if (iThread == Def_Thread_ReadFile)
+	{
+		SendMessage(ID_Update_Record_View_Event,1,(LPARAM)&csResult);
+	}
+	return csResult;
 }
 CString CMainFrame::_TestCaseReadRecord(int iNumber,int iLength,bool bUICC)
 {
@@ -2555,6 +2713,7 @@ int CMainFrame::RunSendCommandScript()
 }
 
 
+
 int CMainFrame::SetStatusThread()
 {
 
@@ -2575,6 +2734,39 @@ int CMainFrame::SetStatusThread()
 	CurMainFrm-> _SetCurrentStatus(); 
 
 	return 0;
+
+}
+
+int CMainFrame::ReadFileAndDisplayThread()
+{
+	CMainFrame *CurMainFrm;
+
+	CurMainFrm = (CMainFrame*)AfxGetApp()->GetMainWnd();
+
+	CString csFileData = CurMainFrm-> _TestCaseReadCurrentFileData(CurMainFrm->csMutlFCI,CurMainFrm->bIsUICC);
+
+	iThread = Def_Thread_Free;
+
+	if (csFileData.IsEmpty())
+	{
+		return FALSE;
+	}
+	if (CurMainFrm->m_dlgChangeFile.IsWindowVisible())
+		CurMainFrm->SendMessage(ID_Update_Dialog_Event,IDD_ChangeFile_Dialog,(LPARAM)&csFileData);
+
+
+	
+	//if (!csFileData.IsEmpty())
+	//	//m_wndProperties->SetFile2PropList(csFileData);
+	//	CurMainFrm->SendMessage(ID_Update_View_Event,(WPARAM)&csFileData,NULL);
+	//else
+	//	return FALSE;
+
+
+
+
+
+	return TRUE;
 
 }
 
@@ -2768,6 +2960,7 @@ void CMainFrame::NewWriteTestADNThread()
 	return ;
 
 }
+
 void CMainFrame::NewReadTestADNThread()
 {
 	DWORD code;
@@ -2816,7 +3009,6 @@ void CMainFrame::NewReadShortMessageThread()
 	return ;
 
 }
-
 
 void CMainFrame::NewClearShortMessageThread()
 {
@@ -2868,7 +3060,6 @@ void CMainFrame::NewRunSendCommandScriptThread()
 
 }
 
-
 void CMainFrame::NewGetFlashDataThread()
 {
 	DWORD code;
@@ -2889,6 +3080,25 @@ void CMainFrame::NewGetFlashDataThread()
 	return ;
 }
 
+void CMainFrame::NewReadFileAndDisplayThread()
+{
+	DWORD code;
+
+	if (bReadMode)
+	{
+		if (!ConfirmCardStatue())
+			return;
+	}
+	GetExitCodeThread(hThread,&code);      
+	if (code != STILL_ACTIVE)
+	{
+		hThread  = CreateThread(NULL, 0,(LPTHREAD_START_ROUTINE)ReadFileAndDisplayThread,NULL, 0, NULL);
+	}
+	else
+		ResumeThread(hThread);
+	iThread = Def_Thread_ReadFile;
+	return ;
+}
 
 
 
@@ -2900,8 +3110,6 @@ int CMainFrame::_TestGetFlashDataThread()
 	iThread  = Def_Thread_Free ;
 	return 0;
 }
-
-
 
 int CMainFrame::_TestGetFlashData()
 {
@@ -2995,17 +3203,19 @@ void CMainFrame::Changefilevalue()
 }
 void CMainFrame::SetProgressCounter(int iAll,int iCurrent)
 {
-	CString csProgress;
+	//CString csProgress;
 
-	if (iAll == 0)
-		return ;
+	//if (iAll == 0)
+	//	return ;
 
-	iCurrent = iCurrent*100 / iAll;
+	//iCurrent = iCurrent*100 / iAll;
 
-	csProgress.Format("%d",iCurrent);
+	//csProgress.Format("%d",iCurrent);
 
-	m_ElementPro->SetText(csProgress+_T("%"));
-	m_wndStatusBar.RedrawWindow();
+	//m_ElementPro->SetText(csProgress+_T("%"));
+	//m_wndStatusBar.RedrawWindow();
+
+	SendMessage(ID_Update_Progress_Event,iAll,iCurrent);
 
 }
 
@@ -3377,20 +3587,22 @@ void CMainFrame::_SetCurrentStatus()
 
 	switch(iThread&0xFF)
 	{
-	case Def_Thread_Free:        csTemp = _T("空闲状态.......||");break;
-	case Def_Thread_GetFile:     csTemp = _T("获取文件中.....||");break;
-	case Def_Thread_SearchFile:  csTemp = _T("搜索文件中.....||");break;
-	case Def_Thread_SaveCard:    csTemp = _T("保存文件中.....||");break;
-	case Def_Thread_MapFile:     csTemp = _T("检查文件列表...||"); break;
-	case Def_Thread_ReadADN :    csTemp = _T("读取测试号簿...||"); break;
-	case Def_Thread_WriteADN:    csTemp = _T("写入测试号簿...||"); break;
-	case Def_Thread_ReadSMS:     csTemp = _T("读取短信.......||"); break;
-	case Def_Thread_ClearSMS:    csTemp = _T("清空短信.......||"); break;
-	case Def_Thread_RunScript:   csTemp = _T("运行脚本.......||"); break;
-	case Def_Thread_Ending:      csTemp = _T("结束进程中.....||");break;
-	case Def_Thread_ExportCSV:   csTemp = _T("导出文件中.....||");break;
-	case Def_Thread_GetFlashData:csTemp = _T("获取数据中.....||");break;
-	default:                     csTemp = _T("未知进程.......||");break;
+	case Def_Thread_Free:        csTemp = _T("空闲状态.......\1");break;
+	case Def_Thread_GetFile:     csTemp = _T("获取文件中.....\1");break;
+	case Def_Thread_SearchFile:  csTemp = _T("搜索文件中.....\1");break;
+	case Def_Thread_SaveCard:    csTemp = _T("保存文件中.....\1");break;
+	case Def_Thread_MapFile:     csTemp = _T("检查文件列表...\1"); break;
+	case Def_Thread_ReadADN :    csTemp = _T("读取测试号簿...\1"); break;
+	case Def_Thread_WriteADN:    csTemp = _T("写入测试号簿...\1"); break;
+	case Def_Thread_ReadSMS:     csTemp = _T("读取短信.......\1"); break;
+	case Def_Thread_ClearSMS:    csTemp = _T("清空短信.......\1"); break;
+	case Def_Thread_RunScript:   csTemp = _T("运行脚本.......\1"); break;
+	case Def_Thread_Ending:      csTemp = _T("结束进程中.....\1");break;
+	case Def_Thread_ExportCSV:   csTemp = _T("导出文件中.....\1");break;
+	case Def_Thread_GetFlashData:csTemp = _T("获取数据中.....\1");break;
+	case Def_Thread_ReadFile:    csTemp = _T("读取文件.......\1");break;
+	case Def_Thread_UpdateFile:  csTemp = _T("更新文件.......\1");break;
+	default:                     csTemp = _T("未知进程.......\1");break;
 
 	}
 
@@ -5133,6 +5345,7 @@ SelectARR_FAILED:
 int CMainFrame::DClickClassTreeView( HTREEITEM hSelectItem, BOOL bShow /*= FALSE*/)
 {
 
+#if DEF_MUTL_THREA
 	CString csFCI,csFileData;
 	int iRet  = FALSE;
 	//选择文件失败则直接无法读取文件
@@ -5161,10 +5374,62 @@ int CMainFrame::DClickClassTreeView( HTREEITEM hSelectItem, BOOL bShow /*= FALSE
 
 	}
 	return iRet;
+
+#else
+
+	CString csFCI,csFileData;
+	int iRet  = FALSE;
+	//选择文件失败则直接无法读取文件
+	if (ClickClassTreeView(hSelectItem,&csFCI))
+	{
+		if (m_wndClassView->_IsDFItem(hSelectItem))
+			return TRUE;
+
+
+		if (bReadMode)
+		{
+			if (bShow)
+			{
+				m_dlgChangeFile.Initialize_Control();
+				m_dlgChangeFile.ShowWindow(SW_SHOW);
+			}
+			iRet = ReadItemInCardAndPutToDisplay(csFCI,&csFileData);
+
+		}
+		
+		else
+		{
+			iRet = ReadItemInCardAndPutToDisplayInFile(hSelectItem,&csFileData);
+			ExplainFile(hSelectItem);
+		}	
+	}
+	else
+		iRet = FALSE;
+
+	//if ((bShow)&&(iRet!=FALSE))
+	//{
+
+	//	m_dlgChangeFile.Initialize_Control();
+
+	//	if (bIsUICC)
+	//		m_dlgChangeFile.SetFileData(csFCI,csFileData);
+	//	else
+	//		m_dlgChangeFile._SetFileData(csFCI,csFileData);
+	//	m_dlgChangeFile.ShowWindow(SW_SHOW);
+
+	//}
+	return iRet;
+
+
+#endif
+
+
 }
 // 读取所选Item指示的卡片中文件,并且显示到FileData 中! // 此处先使用当前线程
 int CMainFrame::ReadItemInCardAndPutToDisplay( CString csFCI,CString* csOutPutFData )
 {
+
+#if DEF_MUTL_THREA
 	CString csFileData =_TestCaseReadCurrentFileData(csFCI,bIsUICC);
 	if (!csFileData.IsEmpty())
 		m_wndProperties->SetFile2PropList(csFileData);
@@ -5176,6 +5441,13 @@ int CMainFrame::ReadItemInCardAndPutToDisplay( CString csFCI,CString* csOutPutFD
 
 
 	return TRUE;
+#else
+	csMutlFCI = csFCI;
+	NewReadFileAndDisplayThread();
+
+	return TRUE;
+#endif
+
 }
 
 //************************************
@@ -6134,9 +6406,5 @@ void CMainFrame::OnPaint()
 	//m_wndRibbonBar.OnDrawCaption();
 	CFrameWndEx::OnPaint();
 }
-
-
-
-
 
 

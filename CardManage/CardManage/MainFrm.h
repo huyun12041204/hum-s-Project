@@ -62,8 +62,11 @@ class CCardManageView;
 
 #define Def_Thread_RunScript      9
 
-#define Def_Thread_ExportCSV     11
-#define Def_Thread_GetFlashData  10
+#define Def_Thread_ExportCSV     0x11
+#define Def_Thread_GetFlashData  0x10
+
+#define Def_Thread_ReadFile      0x21
+#define Def_Thread_UpdateFile    0x22
 
 #define Def_Thread_Ending         -1
 #define Def_Thread_Suspend        0x100
@@ -126,6 +129,7 @@ protected:  // 控件条嵌入成员
     CMFCRibbonBaseElement* m_ElementSta; 
     CMFCRibbonBaseElement* m_ElementThr; 
 	CMFCRibbonBaseElement* m_ElementPro;
+	CMFCRibbonProgressBar* m_ElementProgress;
 
 	CLeftPane              m_wndLeftPane;	
 	CPINStatus             m_wndPinStatus;
@@ -137,6 +141,9 @@ protected:  // 控件条嵌入成员
 	CString     csCardATR;
 	CString     csAppList;
 
+	//用于多进程读取文件
+	CString csMutlFCI;
+	
 
 	//其他状态变量
 	bool  bGetFileSystem;
@@ -232,9 +239,13 @@ public:
 	afx_msg void OnSendCommandToTerminalButton();
 	afx_msg void OnPowerOnButton();
 	afx_msg void OnPowerOffButton();
+	afx_msg LRESULT OnUpdateProgress(WPARAM  wParam,LPARAM  LParam);
+	afx_msg LRESULT OnUpdateView(WPARAM  wParam,LPARAM  LParam);
+	afx_msg LRESULT OnGetProplistAC(WPARAM wParam,LPARAM LParam);
+	afx_msg LRESULT OnUpdateRecordView(WPARAM wParam,LPARAM LParam);
+	afx_msg LRESULT OnUpdateDataDialog(WPARAM wParam,LPARAM LParam);
 
 	
-
 protected:
 
 	bool Initialize_Ribbon(void);
@@ -324,6 +335,7 @@ private:
 	static int SearchFileThread();
 	static int SaveCurrentCardThread();
 	static int SetStatusThread();
+	static int ReadFileAndDisplayThread();
 	static int CheckMapFileListThread();
 	static int WriteTestADNThread();
 	static int ReadTestADNThread();
@@ -385,6 +397,7 @@ public:
 
 
 
+	void NewReadFileAndDisplayThread();
 	BOOL ExportCSV();
 	BOOL ExportString( CStdioFile& CSFFile,HTREEITEM hItem);
 	BOOL _GenerateFileInformation( HTREEITEM hChildItem, CString csFCI,CString&csInfo );

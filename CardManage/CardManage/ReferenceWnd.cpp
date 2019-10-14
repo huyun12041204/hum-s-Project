@@ -66,8 +66,12 @@ int CReferenceWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)
 void CReferenceWnd::OnSize(UINT nType, int cx, int cy)
 {
 	CDockablePane::OnSize(nType, cx, cy);
+	if (m_wndPDF.m_hWnd != NULL)
+	{
+		m_wndPDF.SetWindowPos(NULL, -1, -1, cx, cy, SWP_NOACTIVATE | SWP_NOMOVE);
+	}
 
-	m_wndPDF.SetWindowPos(NULL,-1,-1,cx,cy,SWP_NOACTIVATE|SWP_NOMOVE);
+	
 }
 
 

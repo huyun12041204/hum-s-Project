@@ -1233,6 +1233,44 @@ void CCardManageView::SetFile2PropList(CString csData)
 
 }
 
+void CCardManageView::SetFileRecord2ProList(int iNumber,CString csRecord)
+{
+	CMFCPropertyGridProperty* pGroup = m_wndPropData.GetProperty(0);
+	pGroup->Show(TRUE);
+
+	int iSum = pGroup->GetSubItemsCount();
+
+	iNumber = iNumber-1;
+	if (iSum <= iNumber)
+		return;
+
+	pGroup->GetSubItem(iNumber)->SetValue(csRecord);
+	//ExplainFileRecord(iNumber, csRecord);
+	_AppendEnter(csRecord);
+	pGroup->GetSubItem(iNumber)->SetDescription(csRecord);
+
+	
+
+}
+void CCardManageView::ExplainFileRecord2ProList(int iNumber,CString csRecord)
+{
+	CMFCPropertyGridProperty* pGroup = m_wndPropData.GetProperty(0);
+
+
+	//pGroup->Show(TRUE);
+
+	//int iSum = pGroup->GetSubItemsCount();
+
+	//iNumber = iNumber-1;
+	//if (iSum <= iNumber)
+	//	return;
+
+	//pGroup->GetSubItem(iNumber)->SetValue(csRecord);
+	//_AppendEnter(csRecord);
+	//pGroup->GetSubItem(iNumber)->SetDescription(csRecord);
+
+}
+
 
 
 
@@ -1650,16 +1688,70 @@ void CCardManageView::InitPropExpain(void)
 
 void CCardManageView::ExplainFile(int iFID,int iMark)
 {
-
+	if ((iFID == 0x00)&&
+		(iMark == 0x00))
+	{
+		iFID  = __iFID;
+		iMark = __iMARK;
+	}
+	else
+	{
+		ResetPBR();
+	}
 	m_wndPropExplain.RemoveAll();
 
 	ExplainFID(iFID,iMark);
 
 }
 
+void CCardManageView::ExplainFileRecord(int iNumber, CString csRecord)
+{
+
+	CMFCPropertyGridProperty*  pSub;
+	CMFCPropertyGridProperty* pGroup2;
+	pGroup2 = m_wndPropExplain.GetProperty(1);
+
+
+	switch(__iMARK)
+	{
+	case _DEF_Card:pSub = Explain_FileData_InMF(csRecord,__iFID,iNumber,TRUE);break;
+		//GSM
+	case _DEF_GSM: pSub = Explain_FileData_InGSM(csRecord,__iFID,iNumber,TRUE);break;
+		//USIM
+	case _DEF_3GPP:pSub = Explain_FileData_In3GPP(csRecord,__iFID,iNumber,TRUE);break;
+		//CSIM
+	case _DEF_3GPP2:pSub = Explain_FileData_In3GPP2(csRecord,__iFID,iNumber,TRUE);break;
+		//CDMA
+	case _DEF_CDMA:pSub = Explain_FileData_InCDMA(csRecord,__iFID,iNumber,TRUE);break;
+		//Telecom
+	case _DEF_Tele:pSub = Explain_FileData_InTelecom(csRecord,__iFID,iNumber,TRUE);break;
+	case _DEF_GSMACCESS:pSub = Explain_FileData_InGSMACCESS(csRecord,__iFID,iNumber,TRUE);break;
+	case _DEF_MMSS:pSub = Explain_FileData_InMMSS(csRecord,__iFID,iNumber,TRUE);break;
+	case _DEF_PHONEBOOK:pSub = Explain_FileData_InPhoneBook(csRecord,__iFID,iNumber,TRUE);break;
+	default:pSub = NULL;break;
+	}
+
+	
+	if (pSub != NULL)
+		//pGroup2->RemoveSubItem()
+		pGroup2->AddSubItem(pSub);
+
+	//m_wndPropExplain.GetProperty()
+	//m_wndPropExplain.AddProperty(pGroup2);
+	//pGroup2->Redraw();
+	//m_wndPropExplain
+	//m_wndPropExplain.RedrawWindow();
+}
+
+
+
 bool CCardManageView::ExplainFID(int iFID, int iMark)
 {
 	bool bRet;
+
+	//此处预先存储下来;
+	__iFID  = iFID;
+	__iMARK = iMark;
 
 	switch(iMark)
 	{
@@ -2155,6 +2247,12 @@ CString CCardManageView::GetData4PropList(int iNumber)
 
 	return csResult;
 }
+void CCardManageView::ResetPBR(void)
+{
+
+	iPBRLen = 0;
+	csPBR.Empty();
+}
 
 
 int  CCardManageView::ExplainPhonebookFile(int iFID)
@@ -2164,53 +2262,71 @@ int  CCardManageView::ExplainPhonebookFile(int iFID)
 	CMainFrame *CurMainFrm;
 	CurMainFrm =(CMainFrame*)AfxGetApp()->GetMainWnd();
 	iType = 0;
-
-	if (CurMainFrm->_TestCaseSelectFile(_T("4F30"),csFCI,CurMainFrm->bIsUICC))
+	bool bSelOther = false;
+	if ((csPBR.IsEmpty()) || (iPBRLen == 0))
 	{
-		csDate  = CurMainFrm->_TestCaseReadCurrentFileData(csFCI,CurMainFrm->bIsUICC);
-		iRecLen = CurMainFrm->_GetRecordLength(csFCI);
-		iNumber = CurMainFrm->_GetRecordNumber(csFCI);
-		iPBRLen = iRecLen;
-		csPBR   = csDate;
-		iType  = 0;
-		for (int i = 0 ; i < iNumber ; i++)
+		bSelOther = true;
+		if (!CurMainFrm->_TestCaseSelectFile(_T("4F30"), csFCI, CurMainFrm->bIsUICC))
 		{
-			
-			csTemp = csDate.Mid(i*iRecLen*2,iRecLen*2);
-			 _WipeEmpty(csTemp);
-			csTemp1= GetTLVData(csTemp,0xA8) ;
-			if (!csTemp1.IsEmpty())
-			{
-				for (int j = 0xC0;j<0xCF;j++)
-				{
-					if ((_CString2Int(GetTLVData(csTemp1,j))/0x100)== iFID)
-						iType = i*0x100+j;	
-				}	
-			}
-			csTemp1= GetTLVData(csTemp,0xA9) ;
-			if (!csTemp1.IsEmpty())
-			{
-				for (int j = 0xC0;j<0xCF;j++)
-				{
-					if ((_CString2Int(GetTLVData(csTemp1,j))/0x100)== iFID)
-					    iType = i*0x100+j;	
-				}	
-			}
-			csTemp1= GetTLVData(csTemp,0xAA) ;
-			if (!csTemp1.IsEmpty())
-			{
-				for (int j = 0xC0;j<0xCF;j++)
-				{
-					if ((_CString2Int(GetTLVData(csTemp1,j))/0x100)== iFID)
-						iType = i*0x100+j;	
-				}	
-			}
-
+			return iType;
 		}
-		csTemp.Format("%02x",iFID);
+		else
+		{
 
-		CurMainFrm->_TestCaseSelectFile(csTemp,csFCI,CurMainFrm->bIsUICC);
+			csDate = CurMainFrm->_TestCaseReadCurrentFileData_UICC(csFCI);
+			iRecLen = CurMainFrm->_GetRecordLength(csFCI);
+			iNumber = CurMainFrm->_GetRecordNumber(csFCI);
+			iPBRLen = iRecLen;
+			csPBR = csDate;
+			iType = 0;
+		}
 	}
+	else
+		iNumber = csPBR.GetLength() / (2 * iPBRLen);
+
+
+
+	for (int i = 0; i < iNumber; i++)
+	{
+
+		csTemp = csPBR.Mid(i * iPBRLen * 2, iPBRLen * 2);
+		_WipeEmpty(csTemp);
+		csTemp1 = GetTLVData(csTemp, 0xA8);
+		if (!csTemp1.IsEmpty())
+		{
+			for (int j = 0xC0; j < 0xCF; j++)
+			{
+				if ((_CString2Int(GetTLVData(csTemp1, j)) / 0x100) == iFID)
+					iType = i * 0x100 + j;
+			}
+		}
+		csTemp1 = GetTLVData(csTemp, 0xA9);
+		if (!csTemp1.IsEmpty())
+		{
+			for (int j = 0xC0; j < 0xCF; j++)
+			{
+				if ((_CString2Int(GetTLVData(csTemp1, j)) / 0x100) == iFID)
+					iType = i * 0x100 + j;
+			}
+		}
+		csTemp1 = GetTLVData(csTemp, 0xAA);
+		if (!csTemp1.IsEmpty())
+		{
+			for (int j = 0xC0; j < 0xCF; j++)
+			{
+				if ((_CString2Int(GetTLVData(csTemp1, j)) / 0x100) == iFID)
+					iType = i * 0x100 + j;
+			}
+		}
+
+	}
+	if (bSelOther)
+	{
+		csTemp.Format("%02x", iFID);
+
+		CurMainFrm->_TestCaseSelectFile(csTemp, csFCI, CurMainFrm->bIsUICC);
+	}
+
 
 	return iType;
 }
